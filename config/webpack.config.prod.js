@@ -13,6 +13,11 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
+const extractSass = new ExtractTextPlugin({
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
+});
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 const publicPath = paths.servedPath;
@@ -40,9 +45,9 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
-  : {};
+? // Making sure that the publicPath goes back to to build folder.
+{ publicPath: Array(cssFilename.split('/').length).join('../') }
+: {};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -67,7 +72,7 @@ module.exports = {
     publicPath: publicPath,
     // Point sourcemap entries to original disk location
     devtoolModuleFilenameTemplate: info =>
-      path.relative(paths.appSrc, info.absoluteResourcePath),
+    path.relative(paths.appSrc, info.absoluteResourcePath),
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -101,6 +106,18 @@ module.exports = {
   module: {
     strictExportPresence: true,
     rules: [
+      {
+        test: /\.scss$/,
+        use: extractSass.extract({
+          use: [{
+            loader: "css-loader"
+          }, {
+            loader: "sass-loader"
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
+      }
       // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
       // { parser: { requireEnsure: false } },
@@ -114,7 +131,6 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -312,6 +328,7 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    extractSass
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

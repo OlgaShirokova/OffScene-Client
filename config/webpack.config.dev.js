@@ -148,6 +148,19 @@ module.exports = {
           name: 'static/media/[name].[hash:8].[ext]',
         },
       },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader", // compiles Sass to CSS
+          options: {
+            includePaths: ["absolute/path/a", "absolute/path/b"]
+          }
+        }]
+      },
       // "url" loader works like "file" loader except that it embeds assets
       // smaller than specified limit in bytes as data URLs to avoid requests.
       // A missing `test` is equivalent to a match.
