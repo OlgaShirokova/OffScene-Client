@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.foo {
+  border: 1px solid black;
+}
+
+.bar {
+  composes: foo;
+  background-color: red;
+}
