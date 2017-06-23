@@ -6,10 +6,10 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <div className={styles.foo}>
-          Good luck bitchez
+          Parent
         </div>
         <div className={styles.bar}>
-          bye kid gg easy
+          Child
         </div>
       </div>
     );
