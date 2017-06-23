@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
+import styles from './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div>App is ready!</div>
+      <div className={styles.App}>
+        <div className={styles.foo}>
+          Good luck bitchez
+        </div>
+        <div className={styles.bar}>
+          bye kid gg easy
+        </div>
+      </div>
     );
   }
 }
