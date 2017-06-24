@@ -1,7 +1,16 @@
 {
   "extends": "airbnb",
   "rules": {
+    "strict": [0, "global"],
+    "no-console": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
-  }
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "no-param-reassign": ["error", { "props": false }],
+    "arrow-parens": ["error", "always"]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+  },
 }
