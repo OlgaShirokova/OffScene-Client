@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
   "rules": {
+    "jsx-quotes": 0,
     "strict": [0, "global"],
     "no-console": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
