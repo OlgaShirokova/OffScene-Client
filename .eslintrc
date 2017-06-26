@@ -8,6 +8,8 @@
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "no-param-reassign": ["error", { "props": false }],
     "arrow-parens": ["error", "always"],
+    "import/no-unresolved": 0,
+    "no-underscore-dangle": 0,
   },
   "env": {
     "browser": true,
