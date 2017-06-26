@@ -13,6 +13,8 @@ a {
 
 .title{
   composes:active;
+  background-color: white;
+  border-bottom: 1px solid #f3e000;
 }
 
 svg {

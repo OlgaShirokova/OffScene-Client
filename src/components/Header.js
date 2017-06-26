@@ -52,7 +52,7 @@ class Header extends Component {
       <Router>
         <div>
           <AppBar
-            title={<a className={styles.title}>OFFSTAGE</a>}
+            title={<NavLink to="/home" activeClassName={styles.title}>OFFSTAGE</NavLink>}
             style={{ backgroundColor: 'white' }}
             iconElementLeft={<IconButton><IconMenu onTouchTap={this.handleToggle} /></IconButton>}
           />
