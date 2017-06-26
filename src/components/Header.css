@@ -1,17 +1,20 @@
 a {
   text-decoration: none;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: white;
-  margin: 0;
-  list-style-type: none;
-  padding: 20px 0 20px 0;
+  padding: 3px 7px 3px 7px;
+  border-bottom: 1px solid #f3e000;
+  color: black;
+  font-family: "GillSans-Light";
 }
 
 .active {
-  color: red;
+  background-color: #f3e000;
+  border-bottom: 1px solid black;
+}
+
+.title{
+  composes:active;
+}
+
+svg {
+  fill: black !important;
 }
