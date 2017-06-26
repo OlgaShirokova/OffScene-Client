@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { func } from 'prop-types';
 
 import DJCard from '../components/DJCard';
-import { search } from '../actions';
+import { defaultSearch } from '../actions';
 
 class Artists extends Component {
 
@@ -11,22 +11,19 @@ class Artists extends Component {
     this.props.getDJs();
   }
 
+  renderDJs() {
+    return this.props.djs.map((element) => <DJCard dj={element} />);
+  }
+
   render() {
+    // if (this.props.djs.length) {
+    //   this.props.djs.forEach((dj) => console.log('deejay: ', dj));
+    //   return (<DJCard dj={{ dj }} />);
+    // }
+    // return null;
     return (
-      <div>
-        <div style={{ width: '100%', display: 'flex', flowDirection: 'row', justifyContent: 'space-around' }}>
-          <DJCard dj={{
-            id: 1,
-            name: 'string',
-            picture: 'string',
-            priceWe: 10,
-            priceWd: 20,
-            city: 'string',
-            avgRating: 5,
-            genres: [],
-          }}
-          />
-        </div>
+      <div className="movie-list-container">
+        {this.renderDJs()}
       </div>
     );
   }
@@ -34,6 +31,7 @@ class Artists extends Component {
 
 Artists.propTypes = {
   getDJs: func.isRequired,
+  djs: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -41,7 +39,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getDJs: () => dispatch(search()),
+  getDJs: () => dispatch(defaultSearch()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Artists);

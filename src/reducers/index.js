@@ -1,10 +1,8 @@
-export const testReducer = (state = {}, action) => {
-  console.log(action, 'action-----');
-  if (action.type.type === 'TEST') {
-    console.log('in reducers');
-    return Object.assign({}, state, { test: 'test passed' });
+export const searchReducer = (state = { djs: [] }, action) => {
+  if (action.type === 'DEFAULT_SEARCH_SUCCESS') {
+    return Object.assign({}, state, { djs: action.data });
   }
   return state;
 };
 
-export default testReducer;
+export default searchReducer;
