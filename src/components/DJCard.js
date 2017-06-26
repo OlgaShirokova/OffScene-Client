@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { number, shape, string, array } from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 
 class DJCard extends Component {
 
   render() {
     return (
-      <Card style={{ width: this.props.width }}>
+      <Card>
         <CardHeader
           title="David Guetta"
           subtitle="5 star rating"
@@ -34,4 +35,18 @@ class DJCard extends Component {
     );
   }
 }
+
+DJCard.propTypes = {
+  dj: shape({
+    id: number,
+    name: string,
+    picture: string,
+    priceWe: number,
+    priceWd: number,
+    city: string,
+    avgRating: number,
+    genres: array,
+  }).isRequired,
+};
+
 export default DJCard;
