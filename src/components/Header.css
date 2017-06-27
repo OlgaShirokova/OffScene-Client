@@ -1,0 +1,22 @@
+a {
+  text-decoration: none;
+  padding: 3px 7px 3px 7px;
+  border-bottom: 1px solid #f3e000;
+  color: black;
+  font-family: "GillSans-Light";
+}
+
+.active {
+  background-color: #f3e000;
+  border-bottom: 1px solid black;
+}
+
+.title{
+  composes:active;
+  background-color: white;
+  border-bottom: 1px solid #f3e000;
+}
+
+svg {
+  fill: black !important;
+}

@@ -1,6 +1,14 @@
 {
   "extends": "airbnb",
+  "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true,
+      }
+  },
   "rules": {
+    max-len: ["error", 200],
+    "semi": 2,
     "jsx-quotes": 0,
     "strict": [0, "global"],
     "no-console": 0,
@@ -10,7 +18,6 @@
     "no-param-reassign": ["error", { "props": false }],
     "arrow-parens": ["error", "always"],
     "import/no-unresolved": 0,
-    "no-underscore-dangle": 0,
   },
   "env": {
     "browser": true,

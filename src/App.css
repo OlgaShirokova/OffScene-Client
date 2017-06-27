@@ -1,27 +1,9 @@
-.App {
-  text-align: center;
-}
-
-/*composes: foo;*/
-
 body {
-  background-color: #FFCC00;
-  padding: 20px;
-  margin: 0;
+  background-color: white;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: grey;
-  padding: 0;
+::-webkit-scrollbar {
+  display: none;
 }
 
-.headerElement {
-  composes: header;
-  list-style-type: none;
-  margin: 0;
-  padding: 10px 0 10px 0;
-  color: white;
-}
+/*our yellow f3e000*/
