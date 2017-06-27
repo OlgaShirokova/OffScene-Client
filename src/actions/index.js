@@ -1,5 +1,14 @@
 import { APICall } from '../apiMiddleware';
 
+export const getDJ = (id) => ({
+  type: 'GET_DJ',
+  id,
+  [APICall]: {
+    url: `http://private-272859-offstage.apiary-mock.com/users/${id}`,
+    method: 'GET',
+  },
+});
+
 export const filterSearch = () => ({
   type: 'FILTER_SEARCH',
 });

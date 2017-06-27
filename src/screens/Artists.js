@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { func, arrayOf, object } from 'prop-types';
-import DJCard from '../components/DJCard';
 import { defaultSearch } from '../actions';
+import DJCard from '../components/DJCard';
+import Header from '../components/Header';
 import artists from './Artists.css';
 
 class Artists extends Component {
-
-  componentDidMount() {
+  componentWillMount() {
     this.props.getDJs();
   }
 
@@ -17,8 +18,11 @@ class Artists extends Component {
 
   render() {
     return (
-      <div className={artists.djListContainer}>
-        {this.renderDJs()}
+      <div>
+        <Header />
+        <div className={artists.djListContainer}>
+          {this.renderDJs()}
+        </div>
       </div>
     );
   }
@@ -37,4 +41,4 @@ const mapDispatchToProps = (dispatch) => ({
   getDJs: () => dispatch(defaultSearch()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Artists);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Artists));

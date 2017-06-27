@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "history": "^4.6.3",
     "material-components-web": "^0.13.0",
     "material-ui": "^0.18.4",
     "prop-types": "^15.5.10",
@@ -11,6 +12,7 @@
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-router-redux": "^4.0.8",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.0",
     "redux-logger": "^3.0.6",
