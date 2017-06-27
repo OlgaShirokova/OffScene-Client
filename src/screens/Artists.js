@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { func } from 'prop-types';
-
 import DJCard from '../components/DJCard';
 import { defaultSearch } from '../actions';
+import artists from './Artists.css';
 
 class Artists extends Component {
 
@@ -12,17 +12,12 @@ class Artists extends Component {
   }
 
   renderDJs() {
-    return this.props.djs.map((element) => <DJCard dj={element} />);
+    return this.props.djs.map((element) => <DJCard dj={element} key={element.id} />);
   }
 
   render() {
-    // if (this.props.djs.length) {
-    //   this.props.djs.forEach((dj) => console.log('deejay: ', dj));
-    //   return (<DJCard dj={{ dj }} />);
-    // }
-    // return null;
     return (
-      <div className="movie-list-container">
+      <div className={artists.djListContainer}>
         {this.renderDJs()}
       </div>
     );

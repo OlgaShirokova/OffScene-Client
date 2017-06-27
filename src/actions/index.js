@@ -1,7 +1,7 @@
 import { APICall } from '../apiMiddleware';
 
 export const filterSearch = () => ({
-  type: 'TEST',
+  type: 'FILTER_SEARCH',
 });
 
 export const defaultSearch = () => ({
