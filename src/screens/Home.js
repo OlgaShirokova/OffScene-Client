@@ -70,7 +70,7 @@ class Home extends Component {
         <div className={options.root}>
           <p style={{ paddingLeft: '10px', color: 'black', fontFamily: 'GillSans-Light', borderBottom: '1px solid #f3e000', width: '300px' }}>NEAREST DJS AROUND YOU</p>
           <GridList style={options.gridList} padding={0} cols={2.2}>
-            {tilesData.map(tile => (
+            {tilesData.map((tile) => (
               <GridTile
                 key={tile.img}
                 title={tile.title}

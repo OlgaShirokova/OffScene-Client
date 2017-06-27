@@ -11,7 +11,7 @@ import styles from '../App.css';
 import styles from './Header.css';
 
 
-const Link = options => (<NavLink activeClassName={styles.active} {...options}>
+const Link = (options) => (<NavLink activeClassName={styles.active} {...options}>
   {options.title.toUpperCase()}</NavLink>);
 
 class Header extends Component {
