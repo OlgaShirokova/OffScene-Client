@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import { func, object } from 'prop-types';
 import { defaultSearch } from '../actions';
 import artists from './Artists.css';
+import DJCard from '../components/DJCard';
 
 class Artists extends Component {
   componentWillMount() {
@@ -15,10 +16,9 @@ class Artists extends Component {
   }
 
   renderDJs() {
-    //eslint-disable-next-line
     return Object.keys(this.props.djs)
     .map((key) => this.props.djs[key])
-    .map((element) => <span key={element.id}>DJ: {element.name}</span>);
+    .map((element) => <DJCard dj={element} key={element.id} />);
   }
 
   render() {
