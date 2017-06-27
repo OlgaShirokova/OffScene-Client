@@ -7,7 +7,6 @@
       }
   },
   "rules": {
-    max-len: ["error", 200],
     "semi": 2,
     "jsx-quotes": 0,
     "strict": [0, "global"],

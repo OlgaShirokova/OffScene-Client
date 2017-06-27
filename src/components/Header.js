@@ -5,9 +5,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import styles from './Header.css';
-import { Home, Events, Artists, LogIn, SignUp } from '../screens/index';
 
 const Link = options => (<NavLink activeClassName={styles.active} {...options}>
   {options.title.toUpperCase()}</NavLink>);
@@ -58,12 +57,6 @@ class Header extends Component {
           >
             {this.renderMenuItems()}
           </Drawer>
-
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/events" component={Events} />
-          <Route exact path="/artists" component={Artists} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/login" component={LogIn} />
 
         </div>
       </Router>

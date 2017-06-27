@@ -1,9 +1,3 @@
 body {
-  background-color: white;
+  background-color: #f3e000;
 }
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-/*our yellow f3e000*/
