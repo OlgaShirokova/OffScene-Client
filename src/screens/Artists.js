@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { func } from 'prop-types';
+import { func, arrayOf, object } from 'prop-types';
 import DJCard from '../components/DJCard';
 import { defaultSearch } from '../actions';
 import artists from './Artists.css';
@@ -26,7 +26,7 @@ class Artists extends Component {
 
 Artists.propTypes = {
   getDJs: func.isRequired,
-  djs: func.isRequired,
+  djs: arrayOf(object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
