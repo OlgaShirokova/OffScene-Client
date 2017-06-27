@@ -17,8 +17,7 @@ class Header extends Component {
     this.state = { open: false };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.authentication = this.authentication.bind(this);
-    this.eventsArtists = this.eventsArtists.bind(this);
+    this.renderMenuItems = this.renderMenuItems.bind(this);
   }
 
   handleToggle() {
@@ -29,18 +28,12 @@ class Header extends Component {
     this.setState({ open: false });
   }
 
-  eventsArtists() {
+  renderMenuItems() {
     return (
       <div>
+        <MenuItem onTouchTap={this.handleClose}><Link to="/home" title="Home" /></MenuItem>
         <MenuItem onTouchTap={this.handleClose}><Link to="/events" title="Events" /></MenuItem>
         <MenuItem onTouchTap={this.handleClose}><Link to="/artists" title="Artists" /></MenuItem>
-      </div>
-    );
-  }
-
-  authentication() {
-    return (
-      <div>
         <MenuItem onTouchTap={this.handleClose}><Link to="/signup" title="Sign Up" /></MenuItem>
         <MenuItem onTouchTap={this.handleClose}><Link to="/login" title="Log In" /></MenuItem>
       </div>
@@ -62,9 +55,7 @@ class Header extends Component {
             open={this.state.open}
             onRequestChange={open => this.setState({ open })}
           >
-            <MenuItem onTouchTap={this.handleClose}><Link to="/home" title="Home" /></MenuItem>
-            {this.eventsArtists()}
-            {this.authentication()}
+            {this.renderMenuItems()}
           </Drawer>
 
         </div>
