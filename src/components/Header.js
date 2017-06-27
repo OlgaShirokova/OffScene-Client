@@ -3,11 +3,13 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/svg-icons/navigation/menu';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import {
+  Link,
+} from 'react-router-dom';
+import styles from '../App.css';
 import styles from './Header.css';
-import { Home, Events, Artists, LogIn, SignUp } from '../screens/index';
+
 
 const Link = (options) => (<NavLink activeClassName={styles.active} {...options}>
   {options.title.toUpperCase()}</NavLink>);
@@ -43,30 +45,21 @@ class Header extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <AppBar
-            title={<NavLink to="/home" activeClassName={styles.title}>OFFSTAGE</NavLink>}
-            style={{ backgroundColor: 'white' }}
-            iconElementLeft={<IconButton><IconMenu onTouchTap={this.handleToggle} /></IconButton>}
-          />
-          <Drawer
-            docked={false}
-            width={100}
-            open={this.state.open}
-            onRequestChange={(open) => this.setState({ open })}
-          >
-            {this.renderMenuItems()}
-          </Drawer>
-
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/events" component={Events} />
-          <Route exact path="/artists" component={Artists} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/login" component={LogIn} />
-
-        </div>
-      </Router>
+      <div>
+        <AppBar
+          title={<NavLink to="/home" activeClassName={styles.title}>OFFSTAGE</NavLink>}
+          style={{ backgroundColor: 'white' }}
+          iconElementLeft={<IconButton><IconMenu onTouchTap={this.handleToggle} /></IconButton>}
+        />
+        <Drawer
+          docked={false}
+          width={100}
+          open={this.state.open}
+          onRequestChange={open => this.setState({ open })}
+        >
+          {this.renderMenuItems()}
+        </Drawer>
+      </div>
     );
   }
 }
