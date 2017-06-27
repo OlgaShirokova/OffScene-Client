@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import styles from './Header.css';
 import { Home, Events, Artists, LogIn, SignUp } from '../screens/index';
 
-const Link = options => (<NavLink activeClassName={styles.active} {...options}>
+const Link = (options) => (<NavLink activeClassName={styles.active} {...options}>
   {options.title.toUpperCase()}</NavLink>);
 
 class Header extends Component {
@@ -54,7 +54,7 @@ class Header extends Component {
             docked={false}
             width={100}
             open={this.state.open}
-            onRequestChange={open => this.setState({ open })}
+            onRequestChange={(open) => this.setState({ open })}
           >
             {this.renderMenuItems()}
           </Drawer>
