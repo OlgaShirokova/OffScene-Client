@@ -5,9 +5,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import React, { Component } from 'react';
 import {
-  Link,
+  NavLink,
 } from 'react-router-dom';
-import styles from '../App.css';
 import styles from './Header.css';
 
 
@@ -34,7 +33,7 @@ class Header extends Component {
   renderMenuItems() {
     return (
       <div>
-        <MenuItem onTouchTap={this.handleClose}><Link to="/home" title="Home" /></MenuItem>
+        <MenuItem onTouchTap={this.handleClose}><Link exact to="/" title="Home" /></MenuItem>
         <MenuItem onTouchTap={this.handleClose}><Link to="/events" title="Events" /></MenuItem>
         <MenuItem onTouchTap={this.handleClose}><Link to="/artists" title="Artists" /></MenuItem>
         <MenuItem onTouchTap={this.handleClose}><Link to="/signup" title="Sign Up" /></MenuItem>
@@ -47,7 +46,7 @@ class Header extends Component {
     return (
       <div>
         <AppBar
-          title={<NavLink to="/home" activeClassName={styles.title}>OFFSTAGE</NavLink>}
+          title={<NavLink exact to="/" activeClassName={styles.title}>OFFSTAGE</NavLink>}
           style={{ backgroundColor: 'white' }}
           iconElementLeft={<IconButton><IconMenu onTouchTap={this.handleToggle} /></IconButton>}
         />
@@ -55,7 +54,7 @@ class Header extends Component {
           docked={false}
           width={100}
           open={this.state.open}
-          onRequestChange={open => this.setState({ open })}
+          onRequestChange={(open) => this.setState({ open })}
         >
           {this.renderMenuItems()}
         </Drawer>
