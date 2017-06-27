@@ -1,13 +1,21 @@
 {
   "extends": "airbnb",
+  "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true,
+      }
+  },
   "rules": {
+    "semi": 2,
     "jsx-quotes": 0,
     "strict": [0, "global"],
     "no-console": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "no-param-reassign": ["error", { "props": false }],
-    "arrow-parens": ["error", "always"]
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
+    "import/no-unresolved": 0,
   },
   "env": {
     "browser": true,
