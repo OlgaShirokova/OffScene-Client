@@ -9,6 +9,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { MuiThemeProvider } from 'material-ui';
 import { Home, Events, Artists, LogIn, SignUp } from './screens/index';
 import DJDetail from './components/DJDetail';
+import Header from './components/Header';
 import apiMiddleware from './apiMiddleware';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers/index';
@@ -26,6 +27,7 @@ ReactDOM.render(
     <MuiThemeProvider>
       <BrowserRouter>
         <div>
+          <Header />
           <Route exact path="/" component={Home} />
           <Switch>
             <Route exact path="/events" component={Events} />

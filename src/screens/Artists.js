@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { func, arrayOf, object } from 'prop-types';
+import { func, object } from 'prop-types';
 import { defaultSearch } from '../actions';
-import DJCard from '../components/DJCard';
-import Header from '../components/Header';
 import artists from './Artists.css';
 
 class Artists extends Component {
@@ -12,14 +10,20 @@ class Artists extends Component {
     this.props.getDJs();
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.djs);
+  }
+
   renderDJs() {
-    return this.props.djs.map((element) => <DJCard dj={element} key={element.id} />);
+    //eslint-disable-next-line
+    return Object.keys(this.props.djs)
+    .map((key) => this.props.djs[key])
+    .map((element) => <span key={element.id}>DJ: {element.name}</span>);
   }
 
   render() {
     return (
       <div>
-        <Header />
         <div className={artists.djListContainer}>
           {this.renderDJs()}
         </div>
@@ -30,11 +34,11 @@ class Artists extends Component {
 
 Artists.propTypes = {
   getDJs: func.isRequired,
-  djs: arrayOf(object).isRequired,
+  djs: object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  djs: state.djs,
+  djs: state.entities.djs,
 });
 
 const mapDispatchToProps = (dispatch) => ({

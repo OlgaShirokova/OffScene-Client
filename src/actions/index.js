@@ -1,4 +1,4 @@
-import { APICall } from '../apiMiddleware';
+import { APICall, schemas } from '../apiMiddleware';
 
 export const getDJ = (id) => ({
   type: 'GET_DJ',
@@ -18,5 +18,6 @@ export const defaultSearch = () => ({
   [APICall]: {
     url: 'http://private-272859-offstage.apiary-mock.com/search',
     method: 'GET',
+    schema: schemas.djArray,
   },
 });

@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "history": "^4.6.3",
+    "lodash.merge": "^4.6.0",
     "material-components-web": "^0.13.0",
     "material-ui": "^0.18.4",
+    "normalizr": "^3.2.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

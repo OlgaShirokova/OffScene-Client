@@ -1,25 +1,26 @@
 import { combineReducers } from 'redux';
+import merge from 'lodash.merge';
 
-const searchReducer = (state = { djs: [] }, action) => {
-  console.log(action);
-  if (action.type === 'DEFAULT_SEARCH_SUCCESS') {
-    console.log('1234');
-    return Object.assign({}, state, { djs: action.data });
+const defaultState = {
+  djs: {},
+  genres: {},
+};
+
+const entities = (state = defaultState, action) => {
+  if (action.data && action.data.entities) {
+    //eslint-disable-next-line
+    return merge({}, state, action.data.entities);
   }
-  console.log('678');
+
   return state;
 };
 
-const DJReducer = (state = { dj: {} }, action) => {
-  if (action.type === 'GET_DJ_SUCCESS') {
-    return Object.assign({}, state, { dj: action.data });
-  }
-  return state;
-};
+// if (action.type === 'GET_DJ_SUCCESS') {
+//   return Object.assign({}, state, { dj: action.data });
+// }
 
 const reducers = combineReducers({
-  searchReducer,
-  DJReducer,
+  entities,
 });
 
 export default reducers;
