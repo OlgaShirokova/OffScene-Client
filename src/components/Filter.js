@@ -7,14 +7,12 @@ import Subheader from 'material-ui/Subheader';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
 const styles = {
-  block: {
-    maxWidth: 250,
-  },
   radioButton: {
     marginBottom: 16,
   },
   filterContainer: {
-    width: 300,
+    marginLeft: 10,
+    marginRight: 10,
   },
 };
 

@@ -3,14 +3,14 @@ import Filter from '../components/Filter';
 
 const styles = {
   filtersContainer: {
-    height: 300,
   },
   filtersRow: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   chipsRow: {
     backgroundColor: 'yellow',
+    justifyContent: 'center',
   },
 };
 

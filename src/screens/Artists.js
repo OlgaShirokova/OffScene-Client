@@ -9,14 +9,13 @@ import DJCard from '../components/DJCard';
 import Filters from '../containers/Filters';
 
 const styles = {
-  paperContainer: {
-    margin: 20,
-    display: 'inline-block',
-  },
   artistsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  paperContainer: {
+    margin: 20,
   },
 };
 
