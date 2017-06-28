@@ -33,7 +33,7 @@ class DJCard extends Component {
           <Card>
             <CardHeader
               title={this.props.dj.name}
-              subtitle={`Rating ${this.props.dj.avgRating}`}
+              subtitle={`Rating ${this.props.dj.avgRating / 100}`}
               avatar={this.props.dj.picture}
               titleStyle={{ fontWeight: '600' }}
               subtitleStyle={{ fontWeight: '100' }}
