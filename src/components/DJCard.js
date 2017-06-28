@@ -13,13 +13,7 @@ import {
 } from 'react-router-dom';
 import { shape } from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-
-const styles = {
-  cardContainer: {
-    width: 250,
-    margin: 5,
-  },
-};
+import styles from './DJCard.css';
 
 class DJCard extends Component {
 
@@ -29,7 +23,7 @@ class DJCard extends Component {
   render() {
     return (
       <Router>
-        <div style={styles.cardContainer}>
+        <div className={styles.cardContainer}>
           <Card>
             <CardHeader
               title={this.props.dj.name}

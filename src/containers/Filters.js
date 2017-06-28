@@ -17,6 +17,7 @@ const styles = {
 class Filters extends Component {
 
   render() {
+    console.log(this.state);
     return (
       <div style={styles.filtersContainer}>
         <div style={styles.filtersRow}>

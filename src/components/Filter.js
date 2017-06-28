@@ -16,24 +16,23 @@ const styles = {
   },
 };
 
+const genres = [
+  'Hip-Hop',
+  'Rap',
+];
+
 class Filter extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      dataSource: [],
-    };
+    console.log(this.props);
+    // this.state = {
+    //   dataSource: [],
+    // };
   }
 
   handleUpdateInput = (value) => {
-    this.setState({
-      dataSource: [
-        value,
-        value + value,
-        value + value + value,
-      ],
-    });
+    console.log(value);
   };
 
   renderFilterContent() {
@@ -47,9 +46,11 @@ class Filter extends Component {
       return (
         <div>
           <AutoComplete
-            hintText="Type any music genre"
-            dataSource={this.state.dataSource}
-            onUpdateInput={this.handleUpdateInput}
+            floatingLabelText="Type any music genre"
+            filter={AutoComplete.fuzzyFilter}
+            dataSource={genres}
+            maxSearchResults={5}
+            onNewRequest={this.handleUpdateInput}
           />
         </div>
       );
