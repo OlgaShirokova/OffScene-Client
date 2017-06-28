@@ -1,0 +1,12 @@
+.filtersContainer {
+}
+
+.filtersRow {
+  display: flex;
+  justify-content: center;
+}
+
+.chipsRow {
+  background-color: yellow;
+  justify-content: center;
+}
