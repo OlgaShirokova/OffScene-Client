@@ -7,24 +7,7 @@ import { defaultSearch } from '../actions';
 import DJCard from '../components/DJCard';
 import Filters from '../containers/Filters';
 
-const styles = {
-  artistsContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  paperContainer: {
-    margin: 20,
-  },
-  djListContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-  },
-  djContainer: {
-    flexBasis: 200,
-  },
-};
+import styles from './Artists.css';
 
 class Artists extends Component {
   componentWillMount() {
@@ -38,16 +21,16 @@ class Artists extends Component {
   renderDJs() {
     return Object.keys(this.props.djs)
     .map((key) => this.props.djs[key])
-    .map((element) => <DJCard dj={element} key={element.id} style={styles.djContainer} />);
+    .map((element) => <DJCard dj={element} key={element.id} className={styles.djContainer} />);
   }
 
   render() {
     return (
-      <div style={styles.artistsContainer}>
-        <Paper style={styles.paperContainer} zDepth={1} rounded={!0} >
+      <div className={styles.artistsContainer}>
+        <Paper className={styles.paperContainer} zDepth={1} rounded={!0} >
           <Filters />
         </Paper>
-        <div style={styles.djListContainer}>
+        <div className={styles.djListContainer}>
           {this.renderDJs()}
         </div>
       </div>

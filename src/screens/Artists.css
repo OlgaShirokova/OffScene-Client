@@ -1,1 +1,19 @@
+.artistsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.paperContainer {
+  margin: 20px;
+}
+
+.djListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.djContainer {
+  flex-basis: 200px;
+}
