@@ -60,28 +60,48 @@ class Filter extends Component {
 
     return (
       <div>
-        <RadioButtonGroup>
+        <RadioButtonGroup name="filterPrice" defaultSelected="input3">
           <RadioButton
-            value="light"
+            value="input1"
             label="0 - 500$"
             style={styles.radioButton}
           />
           <RadioButton
-            value="light"
+            value="input2"
             label="500$ - 2000$"
             style={styles.radioButton}
           />
           <RadioButton
-            value="light"
+            value="input3"
             label="2000$ - 5000$"
             style={styles.radioButton}
           />
           <RadioButton
-            value="light"
+            value="input4"
             label="+5000$"
             style={styles.radioButton}
           />
         </RadioButtonGroup>
+        {/* <RadioButton
+          value="not_light"
+          label="0 - 500$"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="500$ - 2000$"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="2000$ - 5000$"
+          style={styles.radioButton}
+        />
+        <RadioButton
+          value="light"
+          label="+5000$"
+          style={styles.radioButton}
+        /> */}
       </div>
     );
   }
