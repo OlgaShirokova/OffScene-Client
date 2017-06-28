@@ -6,15 +6,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import Subheader from 'material-ui/Subheader';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
-const styles = {
-  radioButton: {
-    marginBottom: 16,
-  },
-  filterContainer: {
-    marginLeft: 10,
-    marginRight: 10,
-  },
-};
+import styles from './Filter.css';
 
 const genres = [
   'Hip-Hop',
@@ -26,9 +18,6 @@ class Filter extends Component {
   constructor(props) {
     super(props);
     console.log(this.props);
-    // this.state = {
-    //   dataSource: [],
-    // };
   }
 
   handleUpdateInput = (value) => {
@@ -62,22 +51,22 @@ class Filter extends Component {
           <RadioButton
             value="input1"
             label="0 - 500$"
-            style={styles.radioButton}
+            className={styles.radioButton}
           />
           <RadioButton
             value="input2"
             label="500$ - 2000$"
-            style={styles.radioButton}
+            className={styles.radioButton}
           />
           <RadioButton
             value="input3"
             label="2000$ - 5000$"
-            style={styles.radioButton}
+            className={styles.radioButton}
           />
           <RadioButton
             value="input4"
             label="+5000$"
-            style={styles.radioButton}
+            className={styles.radioButton}
           />
         </RadioButtonGroup>
       </div>
@@ -86,7 +75,7 @@ class Filter extends Component {
 
   render() {
     return (
-      <div style={styles.filterContainer}>
+      <div className={styles.filterContainer}>
         <Subheader>
           {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1)}
         </Subheader>
