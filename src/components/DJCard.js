@@ -14,6 +14,12 @@ import {
 import { shape } from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 
+const styles = {
+  cardContainer: {
+    width: 250,
+  },
+};
+
 class DJCard extends Component {
 
   componentDidMount() {
@@ -22,7 +28,7 @@ class DJCard extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={styles.cardContainer}>
           <Card>
             <CardHeader
               title={this.props.dj.name}
