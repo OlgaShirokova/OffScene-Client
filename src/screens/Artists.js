@@ -3,8 +3,18 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { func, object } from 'prop-types';
 import { defaultSearch } from '../actions';
-import artists from './Artists.css';
 import DJCard from '../components/DJCard';
+
+const styles = {
+  djListContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  djContainer: {
+    flexBasis: 200,
+  },
+};
 
 class Artists extends Component {
   componentWillMount() {
@@ -18,13 +28,13 @@ class Artists extends Component {
   renderDJs() {
     return Object.keys(this.props.djs)
     .map((key) => this.props.djs[key])
-    .map((element) => <DJCard dj={element} key={element.id} />);
+    .map((element) => <DJCard dj={element} key={element.id} style={styles.djContainer} />);
   }
 
   render() {
     return (
       <div>
-        <div className={artists.djListContainer}>
+        <div style={styles.djListContainer}>
           {this.renderDJs()}
         </div>
       </div>
