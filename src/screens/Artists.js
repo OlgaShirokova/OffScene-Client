@@ -5,6 +5,7 @@ import { func, object } from 'prop-types';
 import { defaultSearch } from '../actions';
 import artists from './Artists.css';
 import DJCard from '../components/DJCard';
+import Filters from '../containers/Filters';
 
 class Artists extends Component {
   componentWillMount() {
@@ -24,6 +25,7 @@ class Artists extends Component {
   render() {
     return (
       <div>
+        <Filters />
         <div className={artists.djListContainer}>
           {this.renderDJs()}
         </div>
