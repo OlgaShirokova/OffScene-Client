@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import Filter from '../components/Filter';
 
 const styles = {
-  filters: {
-    display: 'flex',
-    justifyContent: 'space-between',
+  filtersContainer: {
     height: 300,
-    backgroundColor: 'red',
+  },
+  filtersRow: {
+    display: 'flex',
+    justifyContent: 'space-around',
+  },
+  chipsRow: {
+    backgroundColor: 'yellow',
   },
 };
 
@@ -14,10 +18,15 @@ class Filters extends Component {
 
   render() {
     return (
-      <div style={styles.filters}>
-        <Filter type='date' />
-        <Filter type='genre' />
-        <Filter type='price' />
+      <div style={styles.filtersContainer}>
+        <div style={styles.filtersRow}>
+          <Filter type='date' />
+          <Filter type='genre' />
+          <Filter type='price' />
+        </div>
+        <div style={styles.chipsRow}>
+          Chips
+        </div>
       </div>
     );
   }

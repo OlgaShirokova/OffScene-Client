@@ -4,6 +4,19 @@ import PropTypes from 'prop-types';
 import DatePicker from 'material-ui/DatePicker';
 import AutoComplete from 'material-ui/AutoComplete';
 import Subheader from 'material-ui/Subheader';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  radioButton: {
+    marginBottom: 16,
+  },
+  filterContainer: {
+    width: 300,
+  },
+};
 
 class Filter extends Component {
 
@@ -47,14 +60,35 @@ class Filter extends Component {
 
     return (
       <div>
-        This is a price filter
+        <RadioButtonGroup>
+          <RadioButton
+            value="light"
+            label="0 - 500$"
+            style={styles.radioButton}
+          />
+          <RadioButton
+            value="light"
+            label="500$ - 2000$"
+            style={styles.radioButton}
+          />
+          <RadioButton
+            value="light"
+            label="2000$ - 5000$"
+            style={styles.radioButton}
+          />
+          <RadioButton
+            value="light"
+            label="+5000$"
+            style={styles.radioButton}
+          />
+        </RadioButtonGroup>
       </div>
     );
   }
 
   render() {
     return (
-      <div>
+      <div style={styles.filterContainer}>
         <Subheader>
           {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1)}
         </Subheader>
