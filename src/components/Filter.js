@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import DatePicker from 'material-ui/DatePicker';
 import AutoComplete from 'material-ui/AutoComplete';
+import Subheader from 'material-ui/Subheader';
 
 class Filter extends Component {
 
@@ -54,7 +55,9 @@ class Filter extends Component {
   render() {
     return (
       <div>
-        {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1)}
+        <Subheader>
+          {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1)}
+        </Subheader>
         {this.renderFilterContent()}
       </div>
     );
