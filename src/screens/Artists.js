@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { func, object } from 'prop-types';
+import Paper from 'material-ui/Paper';
 import { defaultSearch } from '../actions';
 import artists from './Artists.css';
 import DJCard from '../components/DJCard';
 import Filters from '../containers/Filters';
+
+const styles = {
+  paperContainer: {
+    margin: 20,
+    display: 'inline-block',
+  },
+};
 
 class Artists extends Component {
   componentWillMount() {
@@ -25,7 +33,9 @@ class Artists extends Component {
   render() {
     return (
       <div>
-        <Filters />
+        <Paper style={styles.paperContainer} zDepth={1} rounded={1} >
+          <Filters />
+        </Paper>
         <div className={artists.djListContainer}>
           {this.renderDJs()}
         </div>
