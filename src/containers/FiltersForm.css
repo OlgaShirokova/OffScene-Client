@@ -1,0 +1,14 @@
+.formContainer {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+}
+
+.date, .genres, .price {
+  padding: 5px;
+  margin: 2px;
+}
+
+.date, .genres {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+}

@@ -5,7 +5,6 @@ import { func, object } from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { defaultSearch } from '../actions';
 import DJCard from '../components/DJCard';
-// import Filters from '../containers/Filters';
 import FiltersForm from '../containers/FiltersForm';
 
 import styles from './Artists.css';
@@ -34,7 +33,7 @@ class Artists extends Component {
     return (
       <div className={styles.artistsContainer}>
         <Paper className={styles.paperContainer} zDepth={1} rounded={!0} >
-          <FiltersForm onSubmit={this.submit} />
+          <FiltersForm />
         </Paper>
         <div className={styles.djListContainer}>
           {this.renderDJs()}

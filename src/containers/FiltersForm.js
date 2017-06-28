@@ -1,35 +1,59 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { func } from 'prop-types';
+import React, { Component } from 'react';
+import { reduxForm, Field } from 'redux-form';
+import MenuItem from 'material-ui/MenuItem';
+import { AutoComplete as MUIAutoComplete } from 'material-ui';
+import {
+  AutoComplete,
+  SelectField,
+  DatePicker,
+} from 'redux-form-material-ui';
+import styles from './FiltersForm.css';
 
-const FiltersForm = (props) => {
-  const { handleSubmit } = props;
-  return (
-    <form onSubmit={handleSubmit}>
-      <form onSubmit={handleSubmit}>
+const dataSource = ['Hip-Hop', 'Rap', 'Techno', 'Trap', 'Dance', 'Pop', 'Hard-Rock'];
+
+class FiltersForm extends Component {
+  render() {
+    return (
+      <form className={styles.formContainer}>
+        {/* <div className={styles.date}> */}
         <div>
-          <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" component="input" type="text" />
+          <Field
+            name="date"
+            component={DatePicker}
+            format={null}
+            floatingLabelText="What day is the event?"
+          />
         </div>
+        {/* <div className={styles.genres}> */}
         <div>
-          <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" component="input" type="text" />
+          <Field
+            name="genre"
+            component={AutoComplete}
+            floatingLabelText="Select some music genres"
+            openOnFocus
+            filter={MUIAutoComplete.fuzzyFilter}
+            dataSource={dataSource}
+          />
         </div>
+        {/* <div className={styles.price}> */}
         <div>
-          <label htmlFor="email">Email</label>
-          <Field name="email" component="input" type="email" />
+          <Field
+            name="price"
+            component={SelectField}
+            floatingLabelText="Select a plan"
+          >
+            <MenuItem value="0 - 500$" primaryText="0 - 500$" />
+            <MenuItem value="500$ - 2000$" primaryText="500$ - 2000$" />
+            <MenuItem value="2000$ - 5000$" primaryText="2000$ - 5000$" />
+            <MenuItem value="+5000$" primaryText="+5000$" />
+          </Field>
         </div>
-        <button type="submit">Submit</button>
       </form>
-    </form>
-  );
-};
+    );
+  }
+}
 
-FiltersForm.propTypes = {
-  handleSubmit: func.isRequired,
-};
-
+// Decorate with redux-form
 export default reduxForm({
-  // a unique name for the form
-  form: 'filters',
+  form: 'myForm',
 })(FiltersForm);
