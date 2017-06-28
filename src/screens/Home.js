@@ -4,6 +4,8 @@ import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
+import styles from './Screens.css';
+
 const imageTable = require('../assets/table.jpeg');
 
 const tilesData = [
@@ -68,7 +70,7 @@ class Home extends Component {
       <div>
         <img src={imageTable} style={{ maxWidth: '100%' }} alt='' />
         <div className={options.root}>
-          <p style={{ paddingLeft: '10px', color: 'black', fontFamily: 'GillSans-Light', borderBottom: '1px solid #f3e000', width: '300px' }}>NEAREST DJS AROUND YOU</p>
+          <h4 className={styles.subtitle}>NEAREST DJS AROUND YOU</h4>
           <GridList style={options.gridList} padding={0} cols={2.2}>
             {tilesData.map((tile) => (
               <GridTile
