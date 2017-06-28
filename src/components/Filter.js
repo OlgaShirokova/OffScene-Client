@@ -5,6 +5,7 @@ import DatePicker from 'material-ui/DatePicker';
 import AutoComplete from 'material-ui/AutoComplete';
 import Subheader from 'material-ui/Subheader';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 
 const styles = {
   block: {
@@ -42,15 +43,14 @@ class Filter extends Component {
     if (this.props.type === 'date') {
       return (
         <div>
-          <DatePicker hintText="Portrait Dialog" mode="landscape" />
-          <DatePicker hintText="Landscape Dialog" mode="landscape" />
+          <DatePicker hintText="Pick a date for your event" mode="landscape" />
         </div>
       );
     } else if (this.props.type === 'genre') {
       return (
         <div>
           <AutoComplete
-            hintText="Type anything"
+            hintText="Type any music genre"
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}
           />
@@ -65,43 +65,27 @@ class Filter extends Component {
             value="input1"
             label="0 - 500$"
             style={styles.radioButton}
+            checkedIcon={<ActionFavorite />}
           />
           <RadioButton
             value="input2"
             label="500$ - 2000$"
             style={styles.radioButton}
+            checkedIcon={<ActionFavorite />}
           />
           <RadioButton
             value="input3"
             label="2000$ - 5000$"
             style={styles.radioButton}
+            checkedIcon={<ActionFavorite />}
           />
           <RadioButton
             value="input4"
             label="+5000$"
             style={styles.radioButton}
+            checkedIcon={<ActionFavorite />}
           />
         </RadioButtonGroup>
-        {/* <RadioButton
-          value="not_light"
-          label="0 - 500$"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="500$ - 2000$"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="2000$ - 5000$"
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="light"
-          label="+5000$"
-          style={styles.radioButton}
-        /> */}
       </div>
     );
   }
