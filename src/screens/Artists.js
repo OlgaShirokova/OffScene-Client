@@ -13,6 +13,11 @@ const styles = {
     margin: 20,
     display: 'inline-block',
   },
+  artistsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
 };
 
 class Artists extends Component {
@@ -32,8 +37,8 @@ class Artists extends Component {
 
   render() {
     return (
-      <div>
-        <Paper style={styles.paperContainer} zDepth={1} rounded={1} >
+      <div style={styles.artistsContainer}>
+        <Paper style={styles.paperContainer} zDepth={1} rounded={!0} >
           <Filters />
         </Paper>
         <div className={artists.djListContainer}>

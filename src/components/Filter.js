@@ -5,7 +5,6 @@ import DatePicker from 'material-ui/DatePicker';
 import AutoComplete from 'material-ui/AutoComplete';
 import Subheader from 'material-ui/Subheader';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 
 const styles = {
   block: {
@@ -65,25 +64,21 @@ class Filter extends Component {
             value="input1"
             label="0 - 500$"
             style={styles.radioButton}
-            checkedIcon={<ActionFavorite />}
           />
           <RadioButton
             value="input2"
             label="500$ - 2000$"
             style={styles.radioButton}
-            checkedIcon={<ActionFavorite />}
           />
           <RadioButton
             value="input3"
             label="2000$ - 5000$"
             style={styles.radioButton}
-            checkedIcon={<ActionFavorite />}
           />
           <RadioButton
             value="input4"
             label="+5000$"
             style={styles.radioButton}
-            checkedIcon={<ActionFavorite />}
           />
         </RadioButtonGroup>
       </div>
