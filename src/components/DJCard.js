@@ -17,6 +17,7 @@ import FlatButton from 'material-ui/FlatButton';
 const styles = {
   cardContainer: {
     width: 250,
+    margin: 5,
   },
 };
 
