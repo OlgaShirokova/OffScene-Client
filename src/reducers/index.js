@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import merge from 'lodash.merge';
 
 const defaultState = {
@@ -21,6 +22,7 @@ const entities = (state = defaultState, action) => {
 
 const reducers = combineReducers({
   entities,
+  form: formReducer,
 });
 
 export default reducers;
