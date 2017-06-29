@@ -19,6 +19,11 @@ class Artists extends Component {
     console.log(values);
   }
 
+  selectedGenresStrings = () => this.props.selectedGenres.map((key) => {
+    return this.props.genres[key].name;
+  })
+
+
   renderDJs() {
     return Object.keys(this.props.djs)
     .map((key) => this.props.djs[key])
@@ -31,7 +36,7 @@ class Artists extends Component {
         <Paper className={styles.paperContainer} zDepth={1} rounded={!0} >
           <FiltersForm
             genres={this.props.genres}
-            selectedGenres={this.props.selectedGenres}
+            selectedGenres={this.selectedGenresStrings()}
           />
         </Paper>
         <div className={styles.djListContainer}>
@@ -45,7 +50,7 @@ class Artists extends Component {
 Artists.propTypes = {
   getDJs: func.isRequired,
   djs: object.isRequired,
-  genres: array.isRequired,
+  genres: object.isRequired,
   selectedGenres: array.isRequired,
 };
 

@@ -15,11 +15,6 @@ import styles from './FiltersForm.css';
 
 class FiltersForm extends Component {
 
-  componentDidUpdate() {
-    // const dataSource2 = this.props.entities.genres;
-    // console.log('---------: ', dataSource2);
-  }
-
   renderChips = () => {
     if (this.props.selectedGenres.length) {
       return this.props.selectedGenres.map((el) => {
@@ -40,7 +35,17 @@ class FiltersForm extends Component {
 
   render() {
     const dataSource = Object.keys(this.props.genres)
-      .map((key) => this.props.genres[key].name);
+    .map((key) => {
+      return {
+        valueKey: key,
+        textKey: this.props.genres[key].name,
+      };
+    });
+    const dataSourceConfig = {
+      text: 'textKey',
+      value: 'valueKey',
+    };
+
     return (
       <form className={styles.formContainer}>
         <div className={styles.formContainerTopRow}>
@@ -86,6 +91,7 @@ class FiltersForm extends Component {
               openOnFocus
               filter={MUIAutoComplete.fuzzyFilter}
               dataSource={dataSource}
+              dataSourceConfig={dataSourceConfig}
             />
           </div>
           <div className={styles.chips}>

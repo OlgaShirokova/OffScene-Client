@@ -12,7 +12,6 @@ const entities = (state = defaultState, action) => {
     //eslint-disable-next-line
     return merge({}, state, action.data.entities);
   }
-
   return state;
 };
 
@@ -27,6 +26,7 @@ const pages = (state = pageDefaultState, action) => {
   if (action.type === '@@redux-form/CHANGE') {
     switch (action.meta.field) {
       case 'genre':
+        // console.log(state, ': state');
         return Object.assign({}, state, {
           artistsPage: Object.assign({}, state.artistsPage, {
             selectedGenres: state.artistsPage.selectedGenres.concat(action.payload),
