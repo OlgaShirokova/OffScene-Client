@@ -14,10 +14,35 @@
 }
 
 .buttonAdd {
-  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.rating {
+  max-width: 10px;
+  padding-left: 0px !important;
+  padding-right: 24px !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'GillSans-Light';
   font-weight: lighter;
+}
+
+td {
+  font-family: 'GillSans-Light' !important;
+}
+
+th {
+  font-family: 'GillSans' !important;
+}
+
+.headline {
+  font-size: 24px;
+  padding-top: 16px;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.slide {
+  padding: 10;
 }

@@ -7,112 +7,156 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import { Rating } from 'material-ui-rating';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import SwipeableViews from 'react-swipeable-views';
+
+
 import styles from './Screens.css';
 
-const eventsData = [
-  {
-    'id': 123456,
-    'date': '2017-07-15T00:00:00+00:00',
-    'status': 0,
-    'djRating': null,
-    'orgRating': null,
-    'price': 1000000,
-  },
-  {
-    'id': 467384,
-    'date': '2017-07-23T00:00:00+00:00',
-    'status': 3,
-    'djRating': 500,
-    'orgRating': 400,
-    'price': 800000,
-  },
-  {
-    'id': 594786,
-    'date': '2017-08-04T00:00:00+00:00',
-    'status': 4,
-    'djRating': null,
-    'orgRating': null,
-    'price': 1500000,
-  },
-];
-
-function translateStatus(id) {
-  let res = 'Status not defined';
-  if (id === 0) res = 'DJ_PENDING';
-  else if (id === 1) res = 'DJ_REJECTED';
-  else if (id === 2) res = 'DJ_ACCEPTED';
-  else if (id === 3) res = 'ORG_CONFIRMED';
-  else if (id === 4) res = 'ORG_CANCELED';
-  return res;
-}
+// function translateStatus(id) {
+//   let res = 'Status not defined';
+//   if (id === 0) res = 'DJ PENDING';
+//   else if (id === 1) res = 'DJ REJECTED';
+//   else if (id === 2) res = 'WAITING FOR ORG CONFIRMATION';
+//   else if (id === 3) res = 'CONFIRMED';
+//   else if (id === 4) res = 'CANCELED';
+//   return res;
+// }
 
 class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      slideIndex: 0,
+      events: [],
       selected: [1],
+      newEvent: {
+        date: '',
+        price: '',
+      },
     };
   }
+  componentWillMount() {
+    this.getEvents();
+  }
+  getEvents = async () => {
+    await fetch('http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events')
+    .then((res) => res.json()).then((data) => this.setState({ events: data }));
+  };
+  handleChange = (value) => {
+    this.setState({
+      slideIndex: value,
+    });
+  };
   isSelected = (index) => this.state.selected.indexOf(index) !== -1;
   handleRowSelection = (selectedRows) => {
     this.setState({
       selected: selectedRows,
     });
   };
-  renderCreator = () => {
+  ratings = (value) => {
+    if (value === null) return '-';
     return (
-      <div className={styles.fieldContainer}>
-        <DatePicker hintText="Date" /><br />
-        <br />
-        <TextField
-          hintText="Price"
-        />
-        <FloatingActionButton disabled={1} className={styles.buttonAdd}>
-          <ContentAdd />
-        </FloatingActionButton>
-      </div>
+      <Rating
+        value={(value / 100)}
+        max={5}
+        className={styles.rating}
+        disabled
+      />
     );
   }
-  renderTable = () => {
+  renderTable = (k) => {
     return (
       <Table onRowSelection={this.handleRowSelection}>
         <TableHeader>
           <TableRow>
-            <TableHeaderColumn>Date</TableHeaderColumn>
-            <TableHeaderColumn>Price</TableHeaderColumn>
-            <TableHeaderColumn>Status</TableHeaderColumn>
+            <TableHeaderColumn>DATE</TableHeaderColumn>
+            <TableHeaderColumn>LOCATION</TableHeaderColumn>
+            <TableHeaderColumn>PRICE</TableHeaderColumn>
+            <TableHeaderColumn>DJ-RATING</TableHeaderColumn>
+            <TableHeaderColumn>ORGANIZER-RATING</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {eventsData.map((events, index) => {
-            return (
-              <TableRow selected={this.isSelected(index)}>
-                <TableRowColumn>{events.date.slice(0, 9)}</TableRowColumn>
-                <TableRowColumn>{events.price}</TableRowColumn>
-                <TableRowColumn>{translateStatus(events.status)}</TableRowColumn>
-              </TableRow>
-            );
+          {this.state.events.map((event, index) => {
+            let s = event.status;
+            // same category: will end up in tab past/canceled
+            if (s === 4) s = 1;
+            if (s === k) {
+              if (s === 4 || 1) {
+                return (
+                  <TableRow key={event.id} selected={this.isSelected(index)}>
+                    <TableRowColumn>{event.date.slice(0, 9)}</TableRowColumn>
+                    <TableRowColumn>{event.location}</TableRowColumn>
+                    <TableRowColumn>{event.price}</TableRowColumn>
+                    <TableRowColumn>{this.ratings(event.djRating)}</TableRowColumn>
+                    <TableRowColumn>{this.ratings(event.orgRating)}</TableRowColumn>
+                  </TableRow>
+                );
+              }
+              return (
+                <TableRow key={event.id} selected={this.isSelected(index)}>
+                  <TableRowColumn>{event.date.slice(0, 9)}</TableRowColumn>
+                  <TableRowColumn>{event.location}</TableRowColumn>
+                  <TableRowColumn>{event.price}</TableRowColumn>
+                </TableRow>
+              );
+            }
+            return null;
           })}
         </TableBody>
       </Table>
     );
   }
-
-  render() {
+  renderYourEvents = (k) => {
     return (
       <div>
-        <div className={styles.createEvent}>
-          <h4 className={styles.subtitle}>CREATE AN EVENT</h4>
-          {this.renderCreator()}
-        </div>
-        <div className={styles.yourEvents}>
-          <h4 className={styles.subtitle}>YOUR EVENTS</h4>
-          {this.renderTable()}
-        </div>
+        <h4 className={styles.subtitle}>YOUR EVENTS</h4>
+        {this.renderTable(k)}
+      </div>
+    );
+  }
+  renderTabs = () => {
+    return (
+      <div>
+        <Tabs
+          onChange={this.handleChange}
+          value={this.state.slideIndex}
+        >
+          <Tab label="WAITING FOR DJ" value={0} />
+          <Tab label="WAITING FOR ORG" value={1} />
+          <Tab label="ACCEPTED/UPCOMING" value={2} />
+          <Tab label="PAST/CANCELED" value={3} />
+        </Tabs>
+        <SwipeableViews
+          index={this.state.slideIndex}
+          onChangeIndex={this.handleChange}
+        >
+          <div>
+            <h2 className={styles.subtitle}>Events awaiting for DJs confirmation.</h2>
+            {this.renderYourEvents(0)}
+          </div>
+          <div className={styles.slide}>
+            <h2 className={styles.subtitle}>Events awaiting for Organizers confirmation.</h2>
+            {this.renderYourEvents(2)}
+          </div>
+          <div className={styles.slide}>
+            <h2 className={styles.subtitle}>Events accepted that will take place in the following days.</h2>
+            {this.renderYourEvents(3)}
+          </div>
+          <div className={styles.slide}>
+            <h2 className={styles.subtitle}>Previous events and the onces canceled/rejected.</h2>
+            {this.renderYourEvents(1)}
+          </div>
+        </SwipeableViews>
+      </div>
+    );
+  };
+  render() {
+    return (
+      <div className={styles.yourEvents}>
+        {this.renderTabs()}
       </div>
     );
   }
