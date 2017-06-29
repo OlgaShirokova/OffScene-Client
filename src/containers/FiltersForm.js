@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import MenuItem from 'material-ui/MenuItem';
+import Subheader from 'material-ui/Subheader';
 import { AutoComplete as MUIAutoComplete } from 'material-ui';
 import {
   AutoComplete,
   SelectField,
   DatePicker,
 } from 'redux-form-material-ui';
+import { Payment, QueueMusic, BookmarkBorder } from 'material-ui-icons';
 import styles from './FiltersForm.css';
 
 const dataSource = ['Hip-Hop', 'Rap', 'Techno', 'Trap', 'Dance', 'Pop', 'Hard-Rock'];
@@ -17,14 +19,22 @@ class FiltersForm extends Component {
       <form className={styles.formContainer}>
         <div className={styles.formContainerTopRow}>
           <div className={styles.date}>
+            <Subheader inset={false} className={styles.subheader}>
+              <BookmarkBorder className={styles.icon} />
+              Select a date
+            </Subheader>
             <Field
               name="date"
               component={DatePicker}
               format={null}
-              floatingLabelText="What day is the event?"
+              floatingLabelText="What is the day of the event?"
             />
           </div>
           <div className={styles.price}>
+            <Subheader inset={false} className={styles.subheader}>
+              <Payment className={styles.icon} />
+              Payment
+            </Subheader>
             <Field
               name="price"
               component={SelectField}
@@ -39,6 +49,10 @@ class FiltersForm extends Component {
         </div>
         <div>
           <div className={styles.genres}>
+            <Subheader inset={false} className={styles.subheader}>
+              <QueueMusic className={styles.icon} />
+              Music Genres
+            </Subheader>
             <Field
               name="genre"
               component={AutoComplete}
