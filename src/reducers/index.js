@@ -29,7 +29,9 @@ const pages = (state = pageDefaultState, action) => {
         // console.log(state, ': state');
         return Object.assign({}, state, {
           artistsPage: Object.assign({}, state.artistsPage, {
-            selectedGenres: state.artistsPage.selectedGenres.concat(action.payload),
+            selectedGenres: state.artistsPage.selectedGenres
+            .filter((el) => el !== action.payload.toString())
+            .concat(action.payload),
           }),
         });
 
