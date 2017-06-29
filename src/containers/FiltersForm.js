@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { array, object } from 'prop-types';
+import { array, object, func } from 'prop-types';
 import MenuItem from 'material-ui/MenuItem';
 import Subheader from 'material-ui/Subheader';
 import Chip from 'material-ui/Chip';
@@ -15,6 +15,10 @@ import styles from './FiltersForm.css';
 
 class FiltersForm extends Component {
 
+  handleRequestDelete = (key) => {
+    this.props.onRemove(key);
+  }
+
   renderChips = () => {
     if (this.props.selectedGenres.length) {
       return this.props.selectedGenres.map((el) => {
@@ -22,6 +26,7 @@ class FiltersForm extends Component {
           <Chip
             className={styles.chip}
             key={el}
+            onRequestDelete={() => this.handleRequestDelete(el)}
           >
             {el}
           </Chip>
@@ -106,9 +111,14 @@ class FiltersForm extends Component {
 FiltersForm.propTypes = {
   genres: object.isRequired,
   selectedGenres: array.isRequired,
+  onRemove: func.isRequired,
 };
 
-// Decorate with redux-form
 export default reduxForm({
-  form: 'myForm',
+  form: 'filtersForm', // a unique name for this form
 })(FiltersForm);
+
+// Decorate with redux-form
+// export default reduxForm({
+//   form: 'myForm',
+// })(FiltersForm);

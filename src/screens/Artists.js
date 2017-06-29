@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { func, object, array } from 'prop-types';
 import Paper from 'material-ui/Paper';
-import { defaultSearch } from '../actions';
+import { defaultSearch, removeSelectedGenre } from '../actions';
 import DJCard from '../components/DJCard';
 import FiltersForm from '../containers/FiltersForm';
 
@@ -11,7 +11,7 @@ import styles from './Artists.css';
 
 class Artists extends Component {
   componentWillMount() {
-    this.props.getDJs();
+    this.props.defaultSearch();
   }
 
   submit = (values) => {
@@ -23,6 +23,13 @@ class Artists extends Component {
     return this.props.genres[key].name;
   })
 
+  removeSelectedGenre = (name) => {
+    const genre = Object.keys(this.props.genres)
+    .map((el) => this.props.genres[el])
+    .filter((el) => el.name === name);
+
+    this.props.removeSelectedGenre(genre[0].id);
+  }
 
   renderDJs() {
     return Object.keys(this.props.djs)
@@ -37,6 +44,7 @@ class Artists extends Component {
           <FiltersForm
             genres={this.props.genres}
             selectedGenres={this.selectedGenresStrings()}
+            onRemove={this.removeSelectedGenre}
           />
         </Paper>
         <div className={styles.djListContainer}>
@@ -48,7 +56,8 @@ class Artists extends Component {
 }
 
 Artists.propTypes = {
-  getDJs: func.isRequired,
+  defaultSearch: func.isRequired,
+  removeSelectedGenre: func.isRequired,
   djs: object.isRequired,
   genres: object.isRequired,
   selectedGenres: array.isRequired,
@@ -61,7 +70,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getDJs: () => dispatch(defaultSearch()),
+  defaultSearch: () => dispatch(defaultSearch()),
+  removeSelectedGenre: (name) => dispatch(removeSelectedGenre(name)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Artists));
