@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { array, object } from 'prop-types';
 import MenuItem from 'material-ui/MenuItem';
 import Subheader from 'material-ui/Subheader';
 import Chip from 'material-ui/Chip';
@@ -12,23 +13,23 @@ import {
 import { Payment, QueueMusic, BookmarkBorder } from 'material-ui-icons';
 import styles from './FiltersForm.css';
 
-const dataSource = ['Hip-Hop', 'Rap', 'Techno', 'Trap', 'Dance', 'Pop', 'Hard-Rock'];
-
 class FiltersForm extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      genres: [],
-    };
+  componentDidUpdate() {
+    // const dataSource2 = this.props.entities.genres;
+    // console.log('---------: ', dataSource2);
   }
 
   renderChips = () => {
-    console.log('hello chips!');
-    if (this.state.genres.length) {
-      return this.state.genres.map((el) => {
+    if (this.props.selectedGenres.length) {
+      return this.props.selectedGenres.map((el) => {
         return (
-          <Chip>{el} Example chip</Chip>
+          <Chip
+            className={styles.chip}
+            key={el}
+          >
+            {el}
+          </Chip>
         );
       });
     }
@@ -37,19 +38,9 @@ class FiltersForm extends Component {
     );
   };
 
-    // return this.props.movies.map(element => {
-    //   // console.log(element);
-    //   return <Chip
-    //       onRequestDelete={handleRequestDelete}
-    //       onTouchTap={handleTouchTap}
-    //       style={styles.chip}
-    //     >
-    //       Deletable Text Chip
-    //     </Chip>
-    // });
-
-
   render() {
+    const dataSource = Object.keys(this.props.genres)
+      .map((key) => this.props.genres[key].name);
     return (
       <form className={styles.formContainer}>
         <div className={styles.formContainerTopRow}>
@@ -105,6 +96,11 @@ class FiltersForm extends Component {
     );
   }
 }
+
+FiltersForm.propTypes = {
+  genres: object.isRequired,
+  selectedGenres: array.isRequired,
+};
 
 // Decorate with redux-form
 export default reduxForm({

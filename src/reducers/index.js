@@ -16,6 +16,30 @@ const entities = (state = defaultState, action) => {
   return state;
 };
 
+
+const pageDefaultState = {
+  artistsPage: {
+    selectedGenres: [],
+  },
+};
+
+const pages = (state = pageDefaultState, action) => {
+  if (action.type === '@@redux-form/CHANGE') {
+    switch (action.meta.field) {
+      case 'genre':
+        return Object.assign({}, state, {
+          artistsPage: Object.assign({}, state.artistsPage, {
+            selectedGenres: state.artistsPage.selectedGenres.concat(action.payload),
+          }),
+        });
+
+      default:
+        return state;
+    }
+  }
+  return state;
+};
+
 // if (action.type === 'GET_DJ_SUCCESS') {
 //   return Object.assign({}, state, { dj: action.data });
 // }
@@ -23,6 +47,7 @@ const entities = (state = defaultState, action) => {
 const reducers = combineReducers({
   entities,
   form: formReducer,
+  pages,
 });
 
 export default reducers;

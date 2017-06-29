@@ -14,7 +14,11 @@
 }
 
 .chips {
+  display: flex;
+}
 
+.chip {
+  margin-right: 5px !important;
 }
 
 .subheader {
