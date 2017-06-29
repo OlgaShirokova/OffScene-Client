@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import MenuItem from 'material-ui/MenuItem';
 import Subheader from 'material-ui/Subheader';
+import Chip from 'material-ui/Chip';
 import { AutoComplete as MUIAutoComplete } from 'material-ui';
 import {
   AutoComplete,
@@ -14,6 +15,40 @@ import styles from './FiltersForm.css';
 const dataSource = ['Hip-Hop', 'Rap', 'Techno', 'Trap', 'Dance', 'Pop', 'Hard-Rock'];
 
 class FiltersForm extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      genres: [],
+    };
+  }
+
+  renderChips = () => {
+    console.log('hello chips!');
+    if (this.state.genres.length) {
+      return this.state.genres.map((el) => {
+        return (
+          <Chip>{el} Example chip</Chip>
+        );
+      });
+    }
+    return (
+      <Chip>No chips yet!</Chip>
+    );
+  };
+
+    // return this.props.movies.map(element => {
+    //   // console.log(element);
+    //   return <Chip
+    //       onRequestDelete={handleRequestDelete}
+    //       onTouchTap={handleTouchTap}
+    //       style={styles.chip}
+    //     >
+    //       Deletable Text Chip
+    //     </Chip>
+    // });
+
+
   render() {
     return (
       <form className={styles.formContainer}>
@@ -47,7 +82,7 @@ class FiltersForm extends Component {
             </Field>
           </div>
         </div>
-        <div>
+        <div className={styles.formContainerBottomRow}>
           <div className={styles.genres}>
             <Subheader inset={false} className={styles.subheader}>
               <QueueMusic className={styles.icon} />
@@ -61,6 +96,9 @@ class FiltersForm extends Component {
               filter={MUIAutoComplete.fuzzyFilter}
               dataSource={dataSource}
             />
+          </div>
+          <div className={styles.chips}>
+            {this.renderChips()}
           </div>
         </div>
       </form>
