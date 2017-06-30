@@ -8,6 +8,7 @@
     }
   },
   "rules": {
+    "no-shadow": 0,
     "arrow-body-style": [0, "always"],
     "max-len": ["error", 200],
     "semi": 2,

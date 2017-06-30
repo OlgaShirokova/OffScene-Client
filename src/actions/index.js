@@ -1,10 +1,10 @@
 import { APICall, schemas } from '../apiMiddleware';
 
-export const getDJ = (id) => ({
+export const getDJ = (payload) => ({
   type: 'GET_DJ',
-  id,
+  payload,
   [APICall]: {
-    url: `http://private-272859-offstage.apiary-mock.com/users/${id}`,
+    url: `http://private-272859-offstage.apiary-mock.com/users/${payload}`,
     method: 'GET',
   },
 });

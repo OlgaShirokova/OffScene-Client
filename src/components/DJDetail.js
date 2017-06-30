@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import { func } from 'prop-types';
+import { ListItem } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
 import { getDJ } from '../actions';
-// import { withRouter } from 'react-router-dom';
+import styles from './DJDetail.css';
+
+const currentDJId = location.pathname.split('/')[2];
 
 class DJDetail extends Component {
-  componentDidMount() {
-    // console.log(this.props.match);
-    // console.log(this.props.match.params.id);
-    // console.log(this.props, '----');
-
-    // this.props.getDJDetail();
+  componentWillMount() {
+    this.props.getDJ(currentDJId);
   }
+
   render() {
     return (
-      <div>
-        <div>hello</div>
+      <div className={styles.djDetailContainer}>
+        <div className={styles.topInfo}>
+          <div className={styles.name}>
+            <ListItem
+              primaryText="Brendan Lim"
+              leftAvatar={<Avatar src="images/ok-128.jpg" />}
+              // rightIcon={<CommunicationChatBubble />}
+            />
+          </div>
+        </div>
         <div>You are now at {location.pathname}</div>
       </div>
     );
@@ -23,21 +33,14 @@ class DJDetail extends Component {
 }
 
 DJDetail.propTypes = {
-  // match: PropTypes.shape({
-  //   params: PropTypes.shape({
-  //     id: PropTypes.string,
-  //   }).isRequired,
-  // }).isRequired,
-  // getDJDetail: PropTypes.func,
+  getDJ: func.isRequired,
 };
 
-// const mapStateToProps = (state) => ({
-const mapStateToProps = () => ({
-  // dj: state.djs.id,
-});
+const mapStateToProps = () => {
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  getDJDetail: () => dispatch(getDJ(this.props.match.params.id)),
+  getDJ: (currentDJId) => dispatch(getDJ(currentDJId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DJDetail);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DJDetail));
