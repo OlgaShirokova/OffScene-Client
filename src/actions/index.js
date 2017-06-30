@@ -13,6 +13,7 @@ export const filterSearch = () => ({
   type: 'FILTER_SEARCH',
 });
 
+
 export const defaultSearch = () => ({
   type: 'DEFAULT_SEARCH',
   [APICall]: {
@@ -20,4 +21,9 @@ export const defaultSearch = () => ({
     method: 'GET',
     schema: schemas.djArray,
   },
+});
+
+export const removeSelectedGenre = (payload) => ({
+  type: 'REMOVE_SELECTED_GENRE',
+  payload,
 });

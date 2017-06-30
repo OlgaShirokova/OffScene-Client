@@ -7,6 +7,7 @@
     "lodash.merge": "^4.6.0",
     "material-components-web": "^0.13.0",
     "material-ui": "^0.18.4",
+    "material-ui-icons": "^1.0.0-alpha.19",
     "normalizr": "^3.2.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -17,6 +18,8 @@
     "react-router-redux": "^4.0.8",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.0",
+    "redux-form": "^6.8.0",
+    "redux-form-material-ui": "^4.2.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   },

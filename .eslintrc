@@ -1,13 +1,15 @@
 {
   "extends": "airbnb",
+  "parser": "babel-eslint",
   "parserOptions": {
-      "sourceType": "module",
-      "ecmaFeatures": {
-          "jsx": true,
-      }
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+    }
   },
   "rules": {
-    max-len: ["error", 200],
+    "arrow-body-style": [0, "always"],
+    "max-len": ["error", 200],
     "semi": 2,
     "jsx-quotes": 0,
     "strict": [0, "global"],
