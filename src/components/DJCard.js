@@ -9,7 +9,6 @@ import {
 } from 'material-ui/Card';
 import {
   BrowserRouter as Router,
-  Link,
 } from 'react-router-dom';
 import { shape } from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
@@ -45,7 +44,9 @@ class DJCard extends Component {
               Short description of the DJ. Short description of the DJ.
             </CardText>
             <CardActions>
-              <Link to={`/artists/${this.props.dj.id}`} ><FlatButton label="CHECK PROFILE" /></Link>
+              <a href={`/artists/${this.props.dj.id}`}>
+                <FlatButton label="CHECK PROFILE" />
+              </a>
               <FlatButton label="BOOK NOW!" />
             </CardActions>
           </Card>
