@@ -9,9 +9,9 @@ export const getDJ = (payload) => ({
   },
 });
 
-export const filterSearch = () => ({
-  type: 'FILTER_SEARCH',
-});
+// export const filterSearch = () => ({
+//   type: 'FILTER_SEARCH',
+// });
 
 
 export const defaultSearch = () => ({
