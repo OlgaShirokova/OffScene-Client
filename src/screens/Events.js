@@ -142,7 +142,7 @@ class Events extends Component {
             {this.renderYourEvents(2)}
           </div>
           <div className={styles.slide}>
-            <h2 className={styles.subtitle}>Events accepted that will take place in the following days.</h2>
+            <h2 className={styles.subtitle}>Upcoming and accepted events.</h2>
             {this.renderYourEvents(3)}
           </div>
           <div className={styles.slide}>
