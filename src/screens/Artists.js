@@ -11,7 +11,7 @@ import styles from './Artists.css';
 
 class Artists extends Component {
   componentWillMount() {
-    this.props.defaultSearch();
+    this.props.defaultSearchProp();
   }
 
   submit = (values) => {
@@ -56,7 +56,7 @@ class Artists extends Component {
 }
 
 Artists.propTypes = {
-  defaultSearch: func.isRequired,
+  defaultSearchProp: func.isRequired,
   removeSelectedGenre: func.isRequired,
   djs: object.isRequired,
   genres: object.isRequired,
@@ -70,7 +70,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  defaultSearch: () => dispatch(defaultSearch()),
+  defaultSearchProp: () => dispatch(defaultSearch()),
   removeSelectedGenre: (name) => dispatch(removeSelectedGenre(name)),
 });
 
