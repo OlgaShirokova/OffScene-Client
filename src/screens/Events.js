@@ -14,16 +14,6 @@ import SwipeableViews from 'react-swipeable-views';
 
 import styles from './Screens.css';
 
-// function translateStatus(id) {
-//   let res = 'Status not defined';
-//   if (id === 0) res = 'DJ PENDING';
-//   else if (id === 1) res = 'DJ REJECTED';
-//   else if (id === 2) res = 'WAITING FOR ORG CONFIRMATION';
-//   else if (id === 3) res = 'CONFIRMED';
-//   else if (id === 4) res = 'CANCELED';
-//   return res;
-// }
-
 class Events extends Component {
   constructor(props) {
     super(props);
