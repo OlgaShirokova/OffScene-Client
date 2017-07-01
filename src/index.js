@@ -30,11 +30,11 @@ ReactDOM.render(
           <Header />
           <Route exact path="/" component={Home} />
           <Switch>
-            <Route exact path="/events" component={Events} />
-            <Route exact path="/artists" component={Artists} />
-            <Route exact path="/artists/:id" component={DJDetail} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/login" component={LogIn} />
+            <Route path="/events" component={Events} />
+            <Route path="/artists/:id/" component={DJDetail} />
+            <Route path="/artists" component={Artists} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={LogIn} />
           </Switch>
         </div>
       </BrowserRouter>
