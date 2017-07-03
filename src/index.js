@@ -10,6 +10,7 @@ import { MuiThemeProvider } from 'material-ui';
 import { Home, Events, Artists, LogIn, SignUp } from './screens/index';
 import DJDetail from './components/DJDetail';
 import Header from './components/Header';
+import BookNow from './containers/BookNow';
 import apiMiddleware from './apiMiddleware';
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducers/index';
@@ -33,6 +34,7 @@ ReactDOM.render(
             <Route path="/events" component={Events} />
             <Route path="/artists/:id/" component={DJDetail} />
             <Route path="/artists" component={Artists} />
+            <Route path="/booknow/:id/" component={BookNow} />
             <Route path="/signup" component={SignUp} />
             <Route path="/login" component={LogIn} />
           </Switch>
