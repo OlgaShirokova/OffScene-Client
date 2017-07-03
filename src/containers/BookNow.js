@@ -41,7 +41,16 @@ class BookNow extends Component {
                   <LocationOn className={styles.icon} />
                   Location
                 </Subheader>
-                {/* <Field /> */}
+                <Field
+                  name="city"
+                  component={SelectField}
+                  floatingLabelText="Select a city"
+                >
+                  <MenuItem value="Barcelona" primaryText="Barcelona" />
+                  <MenuItem value="Madrid" primaryText="Madrid" />
+                  <MenuItem value="Valencia" primaryText="Valencia" />
+                  <MenuItem value="Los Angeles" primaryText="Los Angeles" />
+                </Field>
                 <RaisedButton label="Primary" primary={!0} />
               </div>
             </form>
