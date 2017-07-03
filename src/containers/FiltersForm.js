@@ -75,6 +75,7 @@ class FiltersForm extends Component {
             <Field
               name="price"
               component={SelectField}
+              defaultValue
               floatingLabelText="Select a plan"
             >
               <MenuItem value="0$ - 500$" primaryText="0$ - 500$" />

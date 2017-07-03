@@ -19,8 +19,9 @@ const entities = (state = defaultState, action) => {
 const pageDefaultState = {
   artistsPage: {
     selectedGenres: [],
-    selectedPrice: undefined,
-    selectedDate: undefined,
+    selectedPrice: '0',
+    selectedDate: Date.now(),
+    results: [],
   },
 };
 
@@ -53,6 +54,18 @@ const pages = (state = pageDefaultState, action) => {
       default:
         return state;
     }
+  }
+
+  if (action.type === 'FILTER_SEARCH') {
+    console.log(action);
+  }
+
+  if (action.type === 'FILTER_SEARCH_SUCCESS') {
+    return Object.assign({}, state, {
+      artistsPage: Object.assign({}, state.artistsPage, {
+        results: action.data.result,
+      }),
+    });
   }
 
   if (action.type === 'REMOVE_SELECTED_GENRE') {
