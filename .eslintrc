@@ -8,6 +8,7 @@
     }
   },
   "rules": {
+    "no-class-assign": 0,
     "no-shadow": 0,
     "arrow-body-style": [0, "always"],
     "max-len": 0,

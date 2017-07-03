@@ -1,0 +1,13 @@
+.bookNowContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.formContainer {
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
