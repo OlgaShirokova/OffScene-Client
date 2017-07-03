@@ -51,7 +51,7 @@ class BookNow extends Component {
                   <MenuItem value="Valencia" primaryText="Valencia" />
                   <MenuItem value="Los Angeles" primaryText="Los Angeles" />
                 </Field>
-                <RaisedButton label="Primary" primary={!0} />
+                <RaisedButton label="Book now" primary={!0} />
               </div>
             </form>
           </Paper>
