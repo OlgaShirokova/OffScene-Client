@@ -11,22 +11,21 @@ import {
   DatePicker,
 } from 'redux-form-material-ui';
 import { Payment, QueueMusic, BookmarkBorder } from 'material-ui-icons';
-import styles from './FiltersForm.css';
+import styles from './styles.css';
 
-class FiltersForm extends Component {
-
-  handleRequestDelete = (key) => {
+class ArtistFilterForm extends Component {
+  _handleRequestDelete = (key) => {
     this.props.onRemove(key);
   }
 
-  renderChips = () => {
+  _renderChips = () => {
     if (this.props.selectedGenres.length) {
       return this.props.selectedGenres.map((el) => {
         return (
           <Chip
             className={styles.chip}
             key={el}
-            onRequestDelete={() => this.handleRequestDelete(el)}
+            onRequestDelete={() => this._handleRequestDelete(el)}
           >
             {el}
           </Chip>
@@ -40,19 +39,19 @@ class FiltersForm extends Component {
 
   render() {
     const dataSource = Object.keys(this.props.genres)
-    .map((key) => {
-      return {
-        valueKey: key,
-        textKey: this.props.genres[key].name,
-      };
-    });
+      .map((key) => {
+        return {
+          valueKey: key,
+          textKey: this.props.genres[key].name,
+        };
+      });
     const dataSourceConfig = {
       text: 'textKey',
       value: 'valueKey',
     };
 
     return (
-      <form className={styles.formContainer}>
+      <form>
         <div className={styles.formContainerTopRow}>
           <div className={styles.date}>
             <Subheader inset={false} className={styles.subheader}>
@@ -100,7 +99,7 @@ class FiltersForm extends Component {
             />
           </div>
           <div className={styles.chips}>
-            {this.renderChips()}
+            {this._renderChips()}
           </div>
         </div>
       </form>
@@ -108,7 +107,7 @@ class FiltersForm extends Component {
   }
 }
 
-FiltersForm.propTypes = {
+ArtistFilterForm.propTypes = {
   genres: object.isRequired,
   selectedGenres: array.isRequired,
   onRemove: func.isRequired,
@@ -116,7 +115,7 @@ FiltersForm.propTypes = {
 
 export default reduxForm({
   form: 'filtersForm', // a unique name for this form
-})(FiltersForm);
+})(ArtistFilterForm);
 
 // Decorate with redux-form
 // export default reduxForm({

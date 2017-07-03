@@ -7,21 +7,12 @@ import {
   CardTitle,
   CardText,
 } from 'material-ui/Card';
-import {
-  // BrowserRouter as Router,
-  Link,
-  withRouter,
-} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { shape } from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
-import styles from './DJCard.css';
+import { Link } from 'react-router-dom';
+import { shape } from 'prop-types';
+import styles from './styles.css';
 
-class DJCard extends Component {
-
-  componentDidMount() {
-  }
-
+export default class ArtistCard extends Component {
   render() {
     return (
       <div className={styles.cardContainer}>
@@ -57,8 +48,8 @@ class DJCard extends Component {
   }
 }
 
-DJCard.propTypes = {
+ArtistCard.propTypes = {
   dj: shape({}).isRequired,
 };
 
-export default withRouter(connect()(DJCard));
+

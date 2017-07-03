@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
-
 import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-import EventList from './EventList';
+import { EventList } from 'components';
+import styles from './styles.css';
 
-import styles from './Screens.css';
-
-class Events extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slideIndex: 0,
-    };
+export default class MyEventsPage extends Component {
+  state = {
+    slideIndex: 0,
   }
 
-  handleChange = (value) => {
+  _handleChange = (value) => {
     this.setState({
       slideIndex: value,
     });
   };
 
-  renderYourEvents = (k) => {
+  _renderYourEvents = (k) => {
     return (
       <div>
         <h4 className={styles.subtitle}>YOUR EVENTS</h4>
@@ -29,7 +24,7 @@ class Events extends Component {
     );
   }
 
-  renderTabs = () => {
+  _renderTabs = () => {
     return (
       <div>
         <Tabs
@@ -47,19 +42,19 @@ class Events extends Component {
         >
           <div>
             <h2 className={styles.subtitle}>Events awaiting for DJs confirmation.</h2>
-            {this.renderYourEvents(0)}
+            {this._renderYourEvents(0)}
           </div>
           <div className={styles.slide}>
             <h2 className={styles.subtitle}>Events awaiting for Organizers confirmation.</h2>
-            {this.renderYourEvents(2)}
+            {this._renderYourEvents(2)}
           </div>
           <div className={styles.slide}>
             <h2 className={styles.subtitle}>Upcoming and accepted events.</h2>
-            {this.renderYourEvents(3)}
+            {this._renderYourEvents(3)}
           </div>
           <div className={styles.slide}>
             <h2 className={styles.subtitle}>Previous events and the onces canceled/rejected.</h2>
-            {this.renderYourEvents(1)}
+            {this._renderYourEvents(1)}
           </div>
         </SwipeableViews>
       </div>
@@ -69,10 +64,8 @@ class Events extends Component {
   render() {
     return (
       <div className={styles.yourEvents}>
-        {this.renderTabs()}
+        {this._renderTabs()}
       </div>
     );
   }
 }
-
-export default Events;

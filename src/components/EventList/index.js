@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
 import { func, object, number } from 'prop-types';
 import {
   Table,
@@ -11,12 +10,17 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { Rating } from 'material-ui-rating';
-import { getEvents } from '../actions';
-import styles from './Screens.css';
+import * as ActionCreators from 'actions'
+import styles from 'pages/Screens.css';
 
-class EventList extends Component {
-  componentWillMount() {
-    this.props.getEventsProp();
+@connect(data => EventList.getData, ActionCreators)
+export default class EventList extends Component {
+  static getData = (state) => ({
+    events: state.entities.events,
+  })
+
+  componentDidMount() {
+    this.props.getEvents();
   }
 
   ratings = (value) => {
@@ -76,18 +80,5 @@ class EventList extends Component {
   }
 }
 
-EventList.propTypes = {
-  getEventsProp: func.isRequired,
-  events: object.isRequired,
-  num: number.isRequired,
-};
 
-const mapStateToProps = (state) => ({
-  events: state.entities.events,
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  getEventsProp: () => dispatch(getEvents()),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EventList));

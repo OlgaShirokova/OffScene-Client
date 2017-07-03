@@ -6,12 +6,6 @@
   flex-wrap: wrap;
 }
 
-.paperContainer{
-  display: flex;
-  margin-left: 10px;
-  /*padding: 30px 65px 0 65px;*/
-}
-
 .card {
   flex: 1;
 }

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
-import styles from './Screens.css';
-
-const imageTable = require('../assets/table.jpeg');
+import imageTable from 'assets/table.jpeg'
+import styles from './styles.css';
 
 const tilesData = [
   {
@@ -63,8 +60,7 @@ const options = {
   },
 };
 
-class Home extends Component {
-
+class HomePage extends Component {
   render() {
     return (
       <div>
@@ -82,7 +78,7 @@ class Home extends Component {
               >
                 <img src={tile.img} alt='' />
               </GridTile>
-              ))}
+            ))}
           </GridList>
         </div>
       </div>
@@ -90,4 +86,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomePage;
