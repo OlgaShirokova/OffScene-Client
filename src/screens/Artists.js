@@ -35,19 +35,24 @@ class Artists extends Component {
   }
 
   handleFilterChange = (filter) => {
-    const params = 'priceMin=3000&priceMax=8000&date=1498842156987&musicGenre=cmFwLGRhbmNl&city=Madrid&distance=2000';
-    // const params = `priceMin=${}&priceMax=${}&date=${}&musicGenre=${}&city=&{}&distance=${}`
+    const priceMin = this.props.selectedPrice;
+    const priceMax = this.props.selectedPrice;
+    const date = this.props.selectedDate;
+    const musicGenre = this.props.selectedGenres;
+    const paramsAux = 'priceMin=3000&priceMax=8000&date=1498842156987&musicGenre=cmFwLGRhbmNl&city=Madrid&distance=2000';
+    const params = `priceMin=${priceMin}&priceMax=${priceMax}&date=${date}&musicGenre=${musicGenre}&city='Barcelona'&distance=2000`;
     // priceMin=3000 &
     // priceMax=8000 &
     // date=1498842156987 &
     // musicGenre=cmFwLGRhbmNl &
     // city=Madrid &
     // maxDistiance=2000
+    console.log('URL Params: ', params);
     console.log('filter changed ', filter);
     console.log('selectedGenres: ', this.props.selectedGenres);
     console.log('selectedPrice: ', this.props.selectedPrice);
     console.log('selectedDate: ', this.props.selectedDate);
-    this.props.filterSearchProp(params);
+    this.props.filterSearchProp(paramsAux);
   }
 
   renderDJs() {

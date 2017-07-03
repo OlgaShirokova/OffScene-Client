@@ -28,7 +28,7 @@ const pages = (state = pageDefaultState, action) => {
   if (action.type === '@@redux-form/CHANGE') {
     switch (action.meta.field) {
       case 'genre':
-        // console.log(state, ': state');
+        console.log('---genre---', action.payload);
         return Object.assign({}, state, {
           artistsPage: Object.assign({}, state.artistsPage, {
             selectedGenres: state.artistsPage.selectedGenres
@@ -40,7 +40,7 @@ const pages = (state = pageDefaultState, action) => {
       case 'date':
         return Object.assign({}, state, {
           artistsPage: Object.assign({}, state.artistsPage, {
-            selectedDate: action.payload,
+            selectedDate: action.payload.getTime(),
           }),
         });
 
