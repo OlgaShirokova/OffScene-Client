@@ -16,6 +16,7 @@ import styles from './FiltersForm.css';
 class FiltersForm extends Component {
 
   handleRequestDelete = (key) => {
+    console.log('delete: ', key);
     this.props.onRemove(key);
   }
 

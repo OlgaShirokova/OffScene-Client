@@ -19,6 +19,8 @@ const entities = (state = defaultState, action) => {
 const pageDefaultState = {
   artistsPage: {
     selectedGenres: [],
+    selectedPrice: undefined,
+    selectedDate: undefined,
   },
 };
 
@@ -32,6 +34,20 @@ const pages = (state = pageDefaultState, action) => {
             selectedGenres: state.artistsPage.selectedGenres
             .filter((el) => el !== action.payload.toString())
             .concat(action.payload),
+          }),
+        });
+
+      case 'date':
+        return Object.assign({}, state, {
+          artistsPage: Object.assign({}, state.artistsPage, {
+            selectedDate: action.payload,
+          }),
+        });
+
+      case 'price':
+        return Object.assign({}, state, {
+          artistsPage: Object.assign({}, state.artistsPage, {
+            selectedPrice: action.payload,
           }),
         });
 
