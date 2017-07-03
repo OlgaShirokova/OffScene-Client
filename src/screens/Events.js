@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { func, object } from 'prop-types';
 import {
   Table,
   TableBody,
@@ -10,8 +13,7 @@ import {
 import { Rating } from 'material-ui-rating';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-
-
+import { getEvents } from '../actions';
 import styles from './Screens.css';
 
 class Events extends Component {
@@ -19,21 +21,12 @@ class Events extends Component {
     super(props);
     this.state = {
       slideIndex: 0,
-      events: [],
       selected: [1],
-      newEvent: {
-        date: '',
-        price: '',
-      },
     };
   }
   componentWillMount() {
-    this.getEvents();
+    this.props.getEventsProp();
   }
-  getEvents = async () => {
-    await fetch('http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events')
-    .then((res) => res.json()).then((data) => this.setState({ events: data }));
-  };
   handleChange = (value) => {
     this.setState({
       slideIndex: value,
@@ -57,6 +50,7 @@ class Events extends Component {
     );
   }
   renderTable = (k) => {
+    console.log('--renderTable--', this.props);
     return (
       <Table onRowSelection={this.handleRowSelection}>
         <TableHeader>
@@ -69,7 +63,7 @@ class Events extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {this.state.events.map((event, index) => {
+          {Object.keys(this.props.events).map((key) => this.props.events[key]).map((event, index) => {
             let s = event.status;
             // same category: will end up in tab past/canceled
             if (s === 4) s = 1;
@@ -152,4 +146,17 @@ class Events extends Component {
   }
 }
 
-export default Events;
+Events.propTypes = {
+  getEventsProp: func.isRequired,
+  events: object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  events: state.entities.events,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getEventsProp: () => dispatch(getEvents()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Events));

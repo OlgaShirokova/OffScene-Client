@@ -5,6 +5,7 @@ import merge from 'lodash.merge';
 const defaultState = {
   djs: {},
   genres: {},
+  events: {},
 };
 
 const entities = (state = defaultState, action) => {

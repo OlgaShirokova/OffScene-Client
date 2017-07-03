@@ -9,11 +9,6 @@ export const getDJ = (payload) => ({
   },
 });
 
-// export const filterSearch = () => ({
-//   type: 'FILTER_SEARCH',
-// });
-
-
 export const defaultSearch = () => ({
   type: 'DEFAULT_SEARCH',
   [APICall]: {
@@ -26,4 +21,13 @@ export const defaultSearch = () => ({
 export const removeSelectedGenre = (payload) => ({
   type: 'REMOVE_SELECTED_GENRE',
   payload,
+});
+
+export const getEvents = () => ({
+  type: 'GET_EVENTS',
+  [APICall]: {
+    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
+    method: 'GET',
+    schema: schemas.eventArray,
+  },
 });

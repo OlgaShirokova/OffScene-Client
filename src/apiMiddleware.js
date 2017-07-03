@@ -4,10 +4,14 @@ const genre = new Schema.Entity('genres');
 const dj = new Schema.Entity('djs', {
   genres: [genre],
 });
+const event = new Schema.Entity('events');
+
 export const schemas = {
   genre,
   dj,
+  event,
   djArray: new Schema.Array(dj),
+  eventArray: new Schema.Array(event),
 };
 
 
