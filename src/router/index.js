@@ -1,7 +1,14 @@
-import React from 'react'
+import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { HomePage, MyEventsPage, ArtistListPage, LoginPage, SignupPage, ArtistProfilePage } from 'pages';
-import { Header } from 'components'
+import {
+  HomePage,
+  MyEventsPage,
+  ArtistListPage,
+  LoginPage,
+  SignupPage,
+  ArtistProfilePage,
+} from 'pages';
+import { Header } from 'components';
 
 export default function Router() {
   return (
@@ -18,6 +25,5 @@ export default function Router() {
         </Switch>
       </div>
     </BrowserRouter>
-  )
+  );
 }
-

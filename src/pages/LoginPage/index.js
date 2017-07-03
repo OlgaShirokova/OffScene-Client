@@ -8,47 +8,47 @@ import TextField from 'material-ui/TextField';
 import styles from './styles.css';
 import * as ActionCreators from 'actions';
 
-const LoginForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user,
-}) => (
-    <Card className={styles.container}>
-      <form action="/" onSubmit={onSubmit}>
-        <h2 className={styles.subtitle}>Login</h2>
+const LoginForm = ({ onSubmit, onChange, errors, user }) =>
+  <Card className={styles.container}>
+    <form action="/" onSubmit={onSubmit}>
+      <h2 className={styles.subtitle}>Login</h2>
 
-        {errors.summary && <p className="error-message">{errors.summary}</p>}
+      {errors.summary &&
+        <p className="error-message">
+          {errors.summary}
+        </p>}
 
-        <div className={styles.fieldLine}>
-          <TextField
-            floatingLabelText="Email"
-            name="email"
-            errorText={errors.email}
-            onChange={onChange}
-            value={user.email}
-          />
-        </div>
+      <div className={styles.fieldLine}>
+        <TextField
+          floatingLabelText="Email"
+          name="email"
+          errorText={errors.email}
+          onChange={onChange}
+          value={user.email}
+        />
+      </div>
 
-        <div className={styles.fieldLine}>
-          <TextField
-            floatingLabelText="Password"
-            type="password"
-            name="password"
-            onChange={onChange}
-            errorText={errors.password}
-            value={user.password}
-          />
-        </div>
+      <div className={styles.fieldLine}>
+        <TextField
+          floatingLabelText="Password"
+          type="password"
+          name="password"
+          onChange={onChange}
+          errorText={errors.password}
+          value={user.password}
+        />
+      </div>
 
-        <div className={styles.loginButton}>
-          <RaisedButton type="submit" label="Log in" default />
-        </div>
+      <div className={styles.loginButton}>
+        <RaisedButton type="submit" label="Log in" default />
+      </div>
 
-        <CardText ><p>Dont have an account ?</p><Link to={'/signup'}>Create one</Link></CardText>
-      </form>
-    </Card>
-  );
+      <CardText>
+        <p>Dont have an account ?</p>
+        <Link to={'/signup'}>Create one</Link>
+      </CardText>
+    </form>
+  </Card>;
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -65,16 +65,15 @@ export default class LoginPage extends Component {
       email: '',
       password: '',
     },
-  }
+  };
 
-  _processForm = (event) => {
+  _processForm = event => {
     event.preventDefault();
     const { email, password } = this.state.user;
-    this.props.signIn({ email, password })
+    this.props.signIn({ email, password });
+  };
 
-  }
-
-  _changeUser = (event) => {
+  _changeUser = event => {
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
@@ -82,8 +81,7 @@ export default class LoginPage extends Component {
     this.setState({
       user,
     });
-  }
-
+  };
 
   render() {
     return (
@@ -93,14 +91,10 @@ export default class LoginPage extends Component {
         errors={this.state.errors}
         user={this.state.user}
       />
-
     );
   }
-
 }
 
 LoginPage.propTypes = {
   signIn: PropTypes.func.isRequired,
 };
-
-

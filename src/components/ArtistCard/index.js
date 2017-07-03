@@ -33,11 +33,11 @@ export default class ArtistCard extends Component {
             subtitleStyle={{ fontWeight: '100' }}
           />
           <CardText>
-            Short description of the DJ. Short description of the DJ.
-            Short description of the DJ. Short description of the DJ.
+            Short description of the DJ. Short description of the DJ. Short
+            description of the DJ. Short description of the DJ.
           </CardText>
           <CardActions>
-            <Link to={`/artists/${this.props.dj.id}`} >
+            <Link to={`/artists/${this.props.dj.id}`}>
               <FlatButton label="CHECK PROFILE" />
             </Link>
             <FlatButton label="BOOK NOW!" />
@@ -51,5 +51,3 @@ export default class ArtistCard extends Component {
 ArtistCard.propTypes = {
   dj: shape({}).isRequired,
 };
-
-

@@ -15,6 +15,4 @@ export default defineActionTypes([
   'SIGN_IN',
   'SIGN_UP',
   'MY_EVENTS',
-])
-
-
+]);

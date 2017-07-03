@@ -5,22 +5,18 @@ import MenuItem from 'material-ui/MenuItem';
 import Subheader from 'material-ui/Subheader';
 import Chip from 'material-ui/Chip';
 import { AutoComplete as MUIAutoComplete } from 'material-ui';
-import {
-  AutoComplete,
-  SelectField,
-  DatePicker,
-} from 'redux-form-material-ui';
+import { AutoComplete, SelectField, DatePicker } from 'redux-form-material-ui';
 import { Payment, QueueMusic, BookmarkBorder } from 'material-ui-icons';
 import styles from './styles.css';
 
 class ArtistFilterForm extends Component {
-  _handleRequestDelete = (key) => {
+  _handleRequestDelete = key => {
     this.props.onRemove(key);
-  }
+  };
 
   _renderChips = () => {
     if (this.props.selectedGenres.length) {
-      return this.props.selectedGenres.map((el) => {
+      return this.props.selectedGenres.map(el => {
         return (
           <Chip
             className={styles.chip}
@@ -32,19 +28,16 @@ class ArtistFilterForm extends Component {
         );
       });
     }
-    return (
-      <Chip>No chips yet!</Chip>
-    );
+    return <Chip>No chips yet!</Chip>;
   };
 
   render() {
-    const dataSource = Object.keys(this.props.genres)
-      .map((key) => {
-        return {
-          valueKey: key,
-          textKey: this.props.genres[key].name,
-        };
-      });
+    const dataSource = Object.keys(this.props.genres).map(key => {
+      return {
+        valueKey: key,
+        textKey: this.props.genres[key].name,
+      };
+    });
     const dataSourceConfig = {
       text: 'textKey',
       value: 'valueKey',

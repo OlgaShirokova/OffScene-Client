@@ -11,4 +11,4 @@ export default function entitiesReducer(state = INITIAL_STATE, action) {
     return merge({}, state, action.data.entities);
   }
   return state;
-};
+}

@@ -1,12 +1,11 @@
-import types from 'actions/types'
-const { REMOVE_SELECTED_GENRE, GET_DJ } = types
-
+import types from 'actions/types';
+const { REMOVE_SELECTED_GENRE, GET_DJ } = types;
 
 const INITIAL_STATE = {
   artistsPage: {
     selectedGenres: [],
   },
-}
+};
 
 export default function pagesReducer(state = INITIAL_STATE, action) {
   if (action.type === '@@redux-form/CHANGE') {
@@ -15,7 +14,7 @@ export default function pagesReducer(state = INITIAL_STATE, action) {
         return Object.assign({}, state, {
           artistsPage: Object.assign({}, state.artistsPage, {
             selectedGenres: state.artistsPage.selectedGenres
-              .filter((el) => el !== action.payload.toString())
+              .filter(el => el !== action.payload.toString())
               .concat(action.payload),
           }),
         });
@@ -28,8 +27,9 @@ export default function pagesReducer(state = INITIAL_STATE, action) {
   if (action.type === REMOVE_SELECTED_GENRE) {
     return Object.assign({}, state, {
       artistsPage: Object.assign({}, state.artistsPage, {
-        selectedGenres: state.artistsPage.selectedGenres
-          .filter((el) => el !== action.payload.toString()),
+        selectedGenres: state.artistsPage.selectedGenres.filter(
+          el => el !== action.payload.toString()
+        ),
       }),
     });
   }
@@ -41,4 +41,4 @@ export default function pagesReducer(state = INITIAL_STATE, action) {
   }
 
   return state;
-};
+}
