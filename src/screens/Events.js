@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { func, object } from 'prop-types';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
-import { Rating } from 'material-ui-rating';
+
 import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-import { getEvents } from '../actions';
+import EventList from './EventList';
+
 import styles from './Screens.css';
 
 class Events extends Component {
@@ -21,86 +11,24 @@ class Events extends Component {
     super(props);
     this.state = {
       slideIndex: 0,
-      selected: [1],
     };
   }
-  componentWillMount() {
-    this.props.getEventsProp();
-  }
+
   handleChange = (value) => {
     this.setState({
       slideIndex: value,
     });
   };
-  isSelected = (index) => this.state.selected.indexOf(index) !== -1;
-  handleRowSelection = (selectedRows) => {
-    this.setState({
-      selected: selectedRows,
-    });
-  };
-  ratings = (value) => {
-    if (value === null) return '-';
-    return (
-      <Rating
-        value={(value / 100)}
-        max={5}
-        className={styles.rating}
-        disabled
-      />
-    );
-  }
-  renderTable = (k) => {
-    console.log('--renderTable--', this.props);
-    return (
-      <Table onRowSelection={this.handleRowSelection}>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderColumn>DATE</TableHeaderColumn>
-            <TableHeaderColumn>LOCATION</TableHeaderColumn>
-            <TableHeaderColumn>PRICE</TableHeaderColumn>
-            <TableHeaderColumn>DJ-RATING</TableHeaderColumn>
-            <TableHeaderColumn>ORGANIZER-RATING</TableHeaderColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {Object.keys(this.props.events).map((key) => this.props.events[key]).map((event, index) => {
-            let s = event.status;
-            // same category: will end up in tab past/canceled
-            if (s === 4) s = 1;
-            if (s === k) {
-              if (s === 4 || 1) {
-                return (
-                  <TableRow key={event.id} selected={this.isSelected(index)}>
-                    <TableRowColumn>{event.date.slice(0, 9)}</TableRowColumn>
-                    <TableRowColumn>{event.location}</TableRowColumn>
-                    <TableRowColumn>{event.price}</TableRowColumn>
-                    <TableRowColumn>{this.ratings(event.djRating)}</TableRowColumn>
-                    <TableRowColumn>{this.ratings(event.orgRating)}</TableRowColumn>
-                  </TableRow>
-                );
-              }
-              return (
-                <TableRow key={event.id} selected={this.isSelected(index)}>
-                  <TableRowColumn>{event.date.slice(0, 9)}</TableRowColumn>
-                  <TableRowColumn>{event.location}</TableRowColumn>
-                  <TableRowColumn>{event.price}</TableRowColumn>
-                </TableRow>
-              );
-            }
-            return null;
-          })}
-        </TableBody>
-      </Table>
-    );
-  }
+
   renderYourEvents = (k) => {
     return (
       <div>
         <h4 className={styles.subtitle}>YOUR EVENTS</h4>
-        {this.renderTable(k)}
+        <EventList num={k} />
       </div>
     );
   }
+
   renderTabs = () => {
     return (
       <div>
@@ -137,6 +65,7 @@ class Events extends Component {
       </div>
     );
   };
+
   render() {
     return (
       <div className={styles.yourEvents}>
@@ -146,17 +75,4 @@ class Events extends Component {
   }
 }
 
-Events.propTypes = {
-  getEventsProp: func.isRequired,
-  events: object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  events: state.entities.events,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getEventsProp: () => dispatch(getEvents()),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Events));
+export default Events;
