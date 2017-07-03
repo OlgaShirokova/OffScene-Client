@@ -14,11 +14,6 @@ class Artists extends Component {
     this.props.defaultSearchProp();
   }
 
-  submit = (values) => {
-    // print the form values to the console
-    console.log(values);
-  }
-
   selectedGenresStrings = () => this.props.selectedGenres.map((key) => {
     return this.props.genres[key].name;
   })
@@ -56,7 +51,7 @@ class Artists extends Component {
     }
 
     const params = `priceMin=${priceMin}&priceMax=${priceMax}&date=${date}&musicGenre=${btoa(musicGenre)}&city='Barcelona'&distance=2000`;
-    console.log(params);
+    // console.log(params);
     this.props.filterSearchProp(params);
   }
 
