@@ -8,9 +8,10 @@
     }
   },
   "rules": {
+    "no-shadow": 0,
     "arrow-body-style": [0, "always"],
     "quote-props": 0,
-    "max-len": ["error", 200],
+    "max-len": 0,
     "semi": 2,
     "jsx-quotes": 0,
     "strict": [0, "global"],
