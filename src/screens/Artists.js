@@ -24,25 +24,30 @@ class Artists extends Component {
   })
 
   removeSelectedGenre = (name) => {
-    console.log('---remove---', name);
     const genre = Object.keys(this.props.genres)
     .map((el) => this.props.genres[el])
     .filter((el) => el.name === name);
 
-    console.log('---genre---', genre[0]);
-
-    this.props.removeSelectedGenre(genre[0].id);
+    this.props.removeSelectedGenre(genre[0].name);
   }
 
   handleFilterChange = (filter) => {
-    const priceMin = this.props.selectedPrice;
-    const priceMax = this.props.selectedPrice;
+    // transform '0$ - 500$' to ['0$', '500$'] or ['+5000$']
+    // if there is no
+    let [priceMin, priceMax] = this.props.selectedPrice.split(' - ');
+    if (priceMax !== undefined) {
+      // the selected range of price is X$ - Y$
+      priceMin = priceMin.slice(0, priceMin.length - 1);
+      priceMax = priceMax.slice(0, priceMax.length - 1);
+    } else {
+      // the selected range of price is +Z$
+      // priceMax will be undefined
+      priceMin = priceMin.slice(1, priceMin.length - 1);
+    }
     const date = this.props.selectedDate;
     const musicGenre = this.props.selectedGenres;
     const paramsAux = 'priceMin=3000&priceMax=8000&date=1498842156987&musicGenre=cmFwLGRhbmNl&city=Madrid&distance=2000';
     const params = `priceMin=${priceMin}&priceMax=${priceMax}&date=${date}&musicGenre=${musicGenre}&city='Barcelona'&distance=2000`;
-    // priceMin=3000 &
-    // priceMax=8000 &
     // date=1498842156987 &
     // musicGenre=cmFwLGRhbmNl &
     // city=Madrid &
