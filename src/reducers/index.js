@@ -49,6 +49,12 @@ const pages = (state = pageDefaultState, action) => {
     });
   }
 
+  if (action.type === 'GET_DJ') {
+    return Object.assign({}, state, {
+      artistID: action.payload,
+    });
+  }
+
   return state;
 };
 
