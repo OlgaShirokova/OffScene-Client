@@ -1,14 +1,22 @@
 .bookNowContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 30px;
 }
 
 .formContainer {
   display: flex;
+  padding: 15px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  height: 24px;
 }
