@@ -51,7 +51,7 @@ class Artists extends Component {
     }
 
     const params = `priceMin=${priceMin}&priceMax=${priceMax}&date=${date}&musicGenre=${btoa(musicGenre)}&city='Barcelona'&distance=2000`;
-    // console.log(params);
+
     this.props.filterSearchProp(params);
   }
 
@@ -74,8 +74,6 @@ class Artists extends Component {
         <Paper className={styles.paperContainer} zDepth={1} rounded={!0} >
           <FiltersForm
             genres={this.props.genres}
-            selectedDate
-            selectedPrice
             selectedGenres={this.selectedGenresStrings()}
             onRemove={this.removeSelectedGenre}
             onChange={this.handleFilterChange}

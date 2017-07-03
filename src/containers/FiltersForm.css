@@ -39,3 +39,17 @@
 .date, .genres, .price, .chips {
   padding: 15px;
 }
+
+@media (max-width: 600px) {
+  .formContainerTopRow {
+    flex-direction: column;
+  }
+
+  .date{
+    border: none;
+  }
+
+  .formContainerTopRow {
+    border: none;
+  }
+}
