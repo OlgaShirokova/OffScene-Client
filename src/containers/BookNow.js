@@ -19,8 +19,8 @@ class BookNow extends Component {
   render() {
     return (
       <div className={styles.bookNowContainer}>
-        <Paper className={styles.bookNow}>
-          <div style={{ display: 'flex' }}>
+        <div>
+          <Paper className={styles.bookNow}>
             <form className={styles.formContainer}>
               <div className={styles.form}>
                 <Subheader inset={false} className={styles.subheader}>
@@ -45,9 +45,11 @@ class BookNow extends Component {
                 <RaisedButton label="Primary" primary={!0} />
               </div>
             </form>
-          </div>
-        </Paper>
-        <DJCard dj={this.props.djs[24]} />
+          </Paper>
+        </div>
+        <div>
+          <DJCard dj={this.props.djs[24]} />
+        </div>
       </div>
     );
   }
