@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import {
+  Link,  // withRouter,
+} from 'react-router-dom';
 import { object, func } from 'prop-types';
 // import { AutoComplete as MUIAutoComplete } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -26,11 +29,13 @@ class BookNow extends Component {
     if (this.props.djs[this.props.match.params.id] === undefined) {
       return (
         <div>
-          <RaisedButton
-            label="REFER TO ARTISTS PAGE"
-            primary={!0}
-            fullWidth={!0}
-          />
+          <Link to={`/artists/${this.props.match.params.id}`}>
+            <RaisedButton
+              label="REFER TO ARTISTS PAGE"
+              primary={!0}
+              fullWidth={!0}
+            />
+          </Link>
         </div>
       );
     }
