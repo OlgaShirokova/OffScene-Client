@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { object } from 'prop-types';
+import { object, func } from 'prop-types';
 import { LocationOn } from 'material-ui-icons';
 import Subheader from 'material-ui/Subheader';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -15,10 +15,15 @@ import {
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
+import { defaultSearch } from '../actions';
 import styles from './DJDetail.css';
 import { Facebook, Twitter, Youtube, Instagram, Soundcloud, Spotify } from '../icons/Icons';
 
 class DJDetail extends Component {
+
+  componentWillMount() {
+    this.props.defaultSearchProp();
+  }
 
   render() {
     if (this.props.djs[this.props.match.params.id] === undefined) {
@@ -102,10 +107,15 @@ class DJDetail extends Component {
 DJDetail.propTypes = {
   match: object.isRequired,
   djs: object.isRequired,
+  defaultSearchProp: func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   djs: state.entities.djs,
 });
 
-export default withRouter(connect(mapStateToProps)(DJDetail));
+const mapDispatchToProps = (dispatch) => ({
+  defaultSearchProp: () => dispatch(defaultSearch()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DJDetail));
