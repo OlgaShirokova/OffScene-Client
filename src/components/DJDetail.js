@@ -21,6 +21,17 @@ import { Facebook, Twitter, Youtube, Instagram, Soundcloud, Spotify } from '../i
 class DJDetail extends Component {
 
   render() {
+    if (this.props.djs[this.props.match.params.id] === undefined) {
+      return (
+        <div>
+          <RaisedButton
+            label="REFER TO ARTISTS PAGE"
+            primary={!0}
+            fullWidth={!0}
+          />
+        </div>
+      );
+    }
     return (
       <Router>
         <div className={styles.djDetailContainer}>
