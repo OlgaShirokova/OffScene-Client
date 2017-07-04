@@ -71,14 +71,16 @@ class Artists extends Component {
   render() {
     return (
       <div className={styles.artistsContainer}>
-        <Paper className={styles.paperContainer} zDepth={1} rounded={!0} >
-          <FiltersForm
-            genres={this.props.genres}
-            selectedGenres={this.selectedGenresStrings()}
-            onRemove={this.removeSelectedGenre}
-            onChange={this.handleFilterChange}
-          />
-        </Paper>
+        <div>
+          <Paper className={styles.paperContainer} zDepth={1} rounded={!0} >
+            <FiltersForm
+              genres={this.props.genres}
+              selectedGenres={this.selectedGenresStrings()}
+              onRemove={this.removeSelectedGenre}
+              onChange={this.handleFilterChange}
+            />
+          </Paper>
+        </div>
         <div className={styles.djListContainer}>
           {this.renderDJs()}
         </div>

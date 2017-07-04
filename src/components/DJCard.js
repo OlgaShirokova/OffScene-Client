@@ -25,7 +25,7 @@ class DJCard extends Component {
   render() {
     return (
       <div className={styles.cardContainer}>
-        <Card>
+        <Card className={styles.card}>
           <CardHeader
             title={this.props.dj.name}
             subtitle={`Rating: ${this.props.dj.avgRating / 100}/5`}
