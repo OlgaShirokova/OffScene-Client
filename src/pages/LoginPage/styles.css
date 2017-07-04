@@ -1,0 +1,26 @@
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: 'GillSans-Light';
+  font-weight: lighter;
+}
+
+.subtitle {
+  display: inline-block;
+  padding-left: 10px;
+  color: black;
+  font-family: 'GillSans-Light';
+  border-bottom: 1px solid #f3e000;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.loginButton {
+  padding-top: 20px;
+}
+
+.signupButton {
+  padding-bottom: 20px;
+}

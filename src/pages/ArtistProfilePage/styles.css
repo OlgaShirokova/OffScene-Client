@@ -1,0 +1,28 @@
+.djDetailContainer{
+  display: flex;
+  flex-direction: row;
+  padding: 30px 65px 0 65px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+}
+
+.paper {
+  flex: 2;
+}
+
+.divider {
+  margin: 8px 0 !important;
+}
+
+.city {
+  display: flex;
+  align-items: center;
+}
+
+.socialMedia {
+  margin-left: 16px;
+}

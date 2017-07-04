@@ -45,9 +45,9 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
-? // Making sure that the publicPath goes back to to build folder.
-{ publicPath: Array(cssFilename.split('/').length).join('../') }
-: {};
+  ? // Making sure that the publicPath goes back to to build folder.
+  { publicPath: Array(cssFilename.split('/').length).join('../') }
+  : {};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -72,7 +72,7 @@ module.exports = {
     publicPath: publicPath,
     // Point sourcemap entries to original disk location
     devtoolModuleFilenameTemplate: info =>
-    path.relative(paths.appSrc, info.absoluteResourcePath),
+      path.relative(paths.appSrc, info.absoluteResourcePath),
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -89,7 +89,16 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: ['.js', '.json', '.jsx'],
     alias: {
-
+      'actions': path.resolve(__dirname, '../src/actions/'),
+      'assets': path.resolve(__dirname, '../src/assets/'),
+      'components': path.resolve(__dirname, '../src/components/'),
+      'pages': path.resolve(__dirname, '../src/pages/'),
+      'reducers': path.resolve(__dirname, '../src/reducers/'),
+      'utils': path.resolve(__dirname, '../src/utils/'),
+      'middlewares': path.resolve(__dirname, '../src/middlewares/'),
+      'store': path.resolve(__dirname, '../src/store/'),
+      'router': path.resolve(__dirname, '../src/router/'),
+      'setup': path.resolve(__dirname, '../src/setup/'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',

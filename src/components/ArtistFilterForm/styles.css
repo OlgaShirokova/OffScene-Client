@@ -1,0 +1,56 @@
+.formContainerBottomRow, .formContainerTopRow {
+  display: flex;
+}
+
+.formContainerTopRow {
+  flex-direction: column;
+}
+
+.formContainerTopRow, .date {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.formContainerBottomRow {
+  flex-direction: column;
+}
+
+.chips {
+  display: flex;
+}
+
+.chip {
+  margin-right: 5px !important;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  height: 24px;
+}
+
+.icon {
+  margin-right: 6px;
+}
+
+.date {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.date, .genres, .price, .chips {
+  padding: 15px;
+}
+
+@media (max-width: 600px) {
+  .formContainerTopRow {
+    flex-direction: column;
+  }
+
+  .date{
+    border: none;
+  }
+
+  .formContainerTopRow {
+    border: none;
+  }
+}
