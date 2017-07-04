@@ -41,11 +41,7 @@ export default class ArtistProfilePage extends Component {
       return (
         <div>
           <Link to={'/artists/'}>
-            <RaisedButton
-              label="REFER TO ARTISTS PAGE"
-              primary={!0}
-              fullWidth={!0}
-            />
+            <RaisedButton label="REFER TO ARTISTS PAGE" primary fullWidth />
           </Link>
         </div>
       );
@@ -82,9 +78,9 @@ export default class ArtistProfilePage extends Component {
           </div>
           <Divider />
           <CardActions>
-            <RaisedButton label="SEE CONTRACT" primary={!0} fullWidth={!0} />
+            <RaisedButton label="SEE CONTRACT" primary fullWidth />
             <Divider className={styles.divider} />
-            <RaisedButton label="BOOK NOW!" primary={!0} fullWidth={!0} />
+            <RaisedButton label="BOOK NOW!" primary fullWidth />
           </CardActions>
         </Card>
         <Paper className={styles.paper}>

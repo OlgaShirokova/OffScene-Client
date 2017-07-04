@@ -49,44 +49,26 @@ export default class EventList extends Component {
             .map(event => {
               let s = event.status;
               // same category: will end up in tab past/canceled
-              if (s === 4) s = 1;
-              if (s === this.props.num) {
-                if (s === 4 || 1) {
-                  return (
-                    <TableRow key={event.id}>
-                      <TableRowColumn>
-                        {event.date.slice(0, 9)}
-                      </TableRowColumn>
-                      <TableRowColumn>
-                        {event.location}
-                      </TableRowColumn>
-                      <TableRowColumn>
-                        {event.price}
-                      </TableRowColumn>
-                      <TableRowColumn>
-                        {this.ratings(event.djRating)}
-                      </TableRowColumn>
-                      <TableRowColumn>
-                        {this.ratings(event.orgRating)}
-                      </TableRowColumn>
-                    </TableRow>
-                  );
-                }
-                return (
-                  <TableRow key={event.id}>
-                    <TableRowColumn>
-                      {event.date.slice(0, 9)}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                      {event.location}
-                    </TableRowColumn>
-                    <TableRowColumn>
-                      {event.price}
-                    </TableRowColumn>
-                  </TableRow>
-                );
-              }
-              return null;
+
+              return (
+                <TableRow key={event.id}>
+                  <TableRowColumn>
+                    {event.date.slice(0, 9)}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {event.location}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {event.price}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {this.ratings(event.djRating)}
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {this.ratings(event.orgRating)}
+                  </TableRowColumn>
+                </TableRow>
+              );
             })}
         </TableBody>
       </Table>

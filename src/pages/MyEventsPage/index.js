@@ -27,7 +27,7 @@ export default class MyEventsPage extends Component {
   _renderTabs = () => {
     return (
       <div>
-        <Tabs onChange={this.handleChange} value={this.state.slideIndex}>
+        <Tabs onChange={this._handleChange} value={this.state.slideIndex}>
           <Tab label="WAITING FOR DJ" value={0} />
           <Tab label="WAITING FOR ORG" value={1} />
           <Tab label="ACCEPTED/UPCOMING" value={2} />
