@@ -96,14 +96,16 @@ export default class ArtistListPage extends Component {
   render() {
     return (
       <div className={styles.artistsContainer}>
-        <Paper className={styles.paperContainer} zDepth={1} rounded={!0}>
-          <ArtistFilterForm
-            genres={this.props.genres}
-            selectedGenres={this._selectedGenresStrings()}
-            onRemove={this._removeSelectedGenre}
-            onChange={this._handleFilterChange}
-          />
-        </Paper>
+        <div>
+          <Paper className={styles.paperContainer} zDepth={1} rounded={!0}>
+            <ArtistFilterForm
+              genres={this.props.genres}
+              selectedGenres={this._selectedGenresStrings()}
+              onRemove={this._removeSelectedGenre}
+              onChange={this._handleFilterChange}
+            />
+          </Paper>
+        </div>
         <div className={styles.djListContainer}>
           {this._renderDJs()}
         </div>

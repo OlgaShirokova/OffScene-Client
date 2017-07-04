@@ -1,4 +1,7 @@
 .cardContainer {
   width: 250px;
-  margin: 5px;
+}
+
+.card {
+  margin: 0 5px;
 }
