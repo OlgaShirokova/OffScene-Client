@@ -71,44 +71,6 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <div>
-          TESTING DIV
-          <div
-            onClick={() =>
-              this.props.signIn({
-                email: 'test@gmail.com',
-                password: 'test',
-              })}
-          >
-            signIn
-          </div>
-          <div
-            onClick={() =>
-              this.props.signUp({
-                email: 'test@gmail.com',
-                password: 'test',
-                role: 0,
-              })}
-          >
-            signUp
-          </div>
-          <div
-            onClick={() => {
-              const searchCriteria = {
-                priceMin: 3000,
-                priceMax: 8000,
-                date: 1499156052844,
-                musicGenre: 'cmFwLGRhbmNl',
-                city: 'Barcelona',
-                maxDistance: 2000,
-              };
-              this.props.getArtists(searchCriteria);
-            }}
-          >
-            getArtists
-          </div>
-          <div onClick={() => this.props.getMyEvents()}>getMyEvents</div>
-        </div>
         <img src={imageTable} style={{ maxWidth: '100%' }} alt="" />
         <div className={options.root}>
           <h4 className={styles.subtitle}>NEAREST DJS AROUND YOU</h4>

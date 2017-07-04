@@ -1,5 +1,4 @@
-import { APICall, schemas, SERVER_URL } from 'middlewares/apiMiddleware';
-import { API_CALL } from 'middlewares';
+import { API_CALL, schemas } from 'middlewares/apiMiddleware';
 import types from './types';
 const {
   GET_DJ,
