@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import {
-  Link,  // withRouter,
+  Link,
 } from 'react-router-dom';
 import { object, func } from 'prop-types';
 // import { AutoComplete as MUIAutoComplete } from 'material-ui';

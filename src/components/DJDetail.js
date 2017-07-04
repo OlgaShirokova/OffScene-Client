@@ -14,6 +14,7 @@ import {
 } from 'material-ui/Card';
 import {
   BrowserRouter as Router,
+  Link,
 } from 'react-router-dom';
 import { defaultSearch } from '../actions';
 import styles from './DJDetail.css';
@@ -29,11 +30,13 @@ class DJDetail extends Component {
     if (this.props.djs[this.props.match.params.id] === undefined) {
       return (
         <div>
-          <RaisedButton
-            label="REFER TO ARTISTS PAGE"
-            primary={!0}
-            fullWidth={!0}
-          />
+          <Link to={'/artists/'}>
+            <RaisedButton
+              label="REFER TO ARTISTS PAGE"
+              primary={!0}
+              fullWidth={!0}
+            />
+          </Link>
         </div>
       );
     }
