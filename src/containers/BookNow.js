@@ -57,7 +57,7 @@ class BookNow extends Component {
           </Paper>
         </div>
         <div>
-          <DJCard dj={this.props.djs[24]} />
+          <DJCard dj={this.props.djs[this.props.match.params.id]} />
         </div>
       </div>
     );
@@ -70,6 +70,7 @@ const mapStateToProps = (state) => ({
 
 BookNow.propTypes = {
   djs: object.isRequired,
+  match: object.isRequired,
 };
 
 BookNow = connect(
