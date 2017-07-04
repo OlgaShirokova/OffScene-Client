@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { object } from 'prop-types';
+import { object, func } from 'prop-types';
 // import { AutoComplete as MUIAutoComplete } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
@@ -12,11 +12,28 @@ import {
   SelectField,
 } from 'redux-form-material-ui';
 import { Payment, LocationOn } from 'material-ui-icons';
+import { defaultSearch } from '../actions';
 import DJCard from '../components/DJCard';
 import styles from './BookNow.css';
 
 class BookNow extends Component {
+
+  componentWillMount() {
+    this.props.defaultSearchProp();
+  }
+
   render() {
+    if (this.props.djs[this.props.match.params.id] === undefined) {
+      return (
+        <div>
+          <RaisedButton
+            label="REFER TO ARTISTS PAGE"
+            primary={!0}
+            fullWidth={!0}
+          />
+        </div>
+      );
+    }
     return (
       <div className={styles.bookNowContainer}>
         <div>
@@ -64,17 +81,23 @@ class BookNow extends Component {
   }
 }
 
+BookNow.propTypes = {
+  djs: object.isRequired,
+  match: object.isRequired,
+  defaultSearchProp: func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   djs: state.entities.djs,
 });
 
-BookNow.propTypes = {
-  djs: object.isRequired,
-  match: object.isRequired,
-};
+const mapDispatchToProps = (dispatch) => ({
+  defaultSearchProp: () => dispatch(defaultSearch()),
+});
 
 BookNow = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(BookNow);
 
 export default reduxForm({
