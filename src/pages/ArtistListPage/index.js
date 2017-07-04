@@ -12,6 +12,9 @@ export default class ArtistListPage extends Component {
     djs: state.entities.djs,
     genres: state.entities.genres,
     selectedGenres: state.pages.artistsPage.selectedGenres,
+    selectedPrice: state.pages.artistsPage.selectedPrice,
+    selectedDate: state.pages.artistsPage.selectedDate,
+    results: state.pages.artistsPage.results,
   });
 
   componentDidMount() {
@@ -33,6 +36,19 @@ export default class ArtistListPage extends Component {
   };
 
   _renderDJs() {
+    if (this.props.results.length) {
+      // if there are search results
+      return this.props.results
+        .map(id => this.props.djs[id])
+        .map(element =>
+          <ArtistCard
+            dj={element}
+            key={element.id}
+            className={styles.djContainer}
+          />
+        );
+    }
+    // showing artists from entities
     return Object.keys(this.props.djs)
       .map(key => this.props.djs[key])
       .map(element =>
@@ -44,6 +60,39 @@ export default class ArtistListPage extends Component {
       );
   }
 
+  _handleFilterChange = () => {
+    let priceMin = 0;
+    let priceMax = 10000;
+    let date = 0;
+    let musicGenre = '';
+    if (this.props.selectedPrice) {
+      // transform '0$ - 500$' to ['0$', '500$'] or ['+5000$']
+      // if there is no
+      [priceMin, priceMax] = this.props.selectedPrice.split(' - ');
+      if (priceMax !== undefined) {
+        // the selected range of price is X$ - Y$
+        priceMin = priceMin.slice(0, priceMin.length - 1);
+        priceMax = priceMax.slice(0, priceMax.length - 1);
+      } else {
+        // the selected range of price is +Z$
+        // priceMax will be undefined
+        priceMin = priceMin.slice(1, priceMin.length - 1);
+      }
+    }
+    if (this.props.selectedDate) date = this.props.selectedDate;
+    if (this.props.selectedGenres) {
+      musicGenre = this.props.selectedGenres.map(
+        el => this.props.genres[el].name
+      );
+    }
+
+    const params = `priceMin=${priceMin}&priceMax=${priceMax}&date=${date}&musicGenre=${btoa(
+      musicGenre
+    )}&city='Barcelona'&distance=2000`;
+
+    this.props.filterSearchProp(params);
+  };
+
   render() {
     return (
       <div className={styles.artistsContainer}>
@@ -52,6 +101,7 @@ export default class ArtistListPage extends Component {
             genres={this.props.genres}
             selectedGenres={this._selectedGenresStrings()}
             onRemove={this._removeSelectedGenre}
+            onChange={this._handleFilterChange}
           />
         </Paper>
         <div className={styles.djListContainer}>

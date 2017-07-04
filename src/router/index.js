@@ -7,6 +7,7 @@ import {
   LoginPage,
   SignupPage,
   ArtistProfilePage,
+  NewEventPage,
 } from 'pages';
 import { Header } from 'components';
 
@@ -22,6 +23,7 @@ export default function Router() {
           <Route path="/artists" component={ArtistListPage} />
           <Route path="/signup" component={SignupPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/book/:id" component={NewEventPage} />
         </Switch>
       </div>
     </BrowserRouter>

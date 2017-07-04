@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { object } from 'prop-types';
+import { Link } from 'react-router-dom';
 import { LocationOn } from 'material-ui-icons';
 import Subheader from 'material-ui/Subheader';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -9,6 +10,8 @@ import Divider from 'material-ui/Divider';
 import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import styles from './styles.css';
 import { SocialIcons } from 'components';
+import * as ActionCreators from 'actions';
+
 const {
   FacebookIcn,
   TwitterIcn,
@@ -18,12 +21,35 @@ const {
   SpotifyIcn,
 } = SocialIcons;
 
-@connect(data => ArtistProfilePage.getData)
+@connect(data => ArtistProfilePage.getData, ActionCreators)
 export default class ArtistProfilePage extends Component {
   static getData = state => ({
     djs: state.entities.djs,
   });
+
+  constructor(props) {
+    super(props);
+    console.log('11', this.props);
+  }
+
+  componentWillMount() {
+    this.props.getArtists();
+  }
+
   render() {
+    if (this.props.djs[this.props.match.params.id] === undefined) {
+      return (
+        <div>
+          <Link to={'/artists/'}>
+            <RaisedButton
+              label="REFER TO ARTISTS PAGE"
+              primary={!0}
+              fullWidth={!0}
+            />
+          </Link>
+        </div>
+      );
+    }
     return (
       <div className={styles.djDetailContainer}>
         <Card className={styles.card}>
@@ -84,5 +110,5 @@ export default class ArtistProfilePage extends Component {
 
 ArtistProfilePage.propTypes = {
   match: object.isRequired,
-  djs: object.isRequired,
+  djs: object,
 };
