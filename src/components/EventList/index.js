@@ -20,7 +20,8 @@ export default class EventList extends Component {
   });
 
   componentDidMount() {
-    this.props.getEvents();
+    // this.props.getEvents();
+    this.props.getMyEvents();
   }
 
   ratings = value => {

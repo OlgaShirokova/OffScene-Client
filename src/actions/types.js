@@ -14,5 +14,6 @@ export default defineActionTypes([
   'GET_EVENTS',
   'SIGN_IN',
   'SIGN_UP',
-  'MY_EVENTS',
+  'GET_MY_EVENTS',
+  'GET_ARTISTS',
 ]);

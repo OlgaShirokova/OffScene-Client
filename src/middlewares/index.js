@@ -1,5 +1,6 @@
 import { normalize, schema as Schema } from 'normalizr';
 import { getToken, saveToken } from 'utils/localStorage';
+import queryString from 'query-string';
 const genre = new Schema.Entity('genres');
 const dj = new Schema.Entity('djs', {
   genres: [genre],
@@ -18,9 +19,15 @@ export const API_CALL = Symbol('API_CALL');
 
 export default ({ basePath }) => ({ dispatch }) => next => async action => {
   if (!action[API_CALL]) return next(action);
-  const { path, header = {}, data, method = 'GET', onSuccess, schema } = action[
-    API_CALL
-  ];
+  let {
+    path,
+    header = {},
+    data,
+    method = 'get',
+    onSuccess,
+    schema,
+    url,
+  } = action[API_CALL];
   dispatch({ type: action.type });
   const headers = new Headers({
     Accept: 'application/json',
@@ -28,15 +35,28 @@ export default ({ basePath }) => ({ dispatch }) => next => async action => {
     Authorization: `Bearer ${getToken()}`,
     ...header,
   });
-  let body = '{}';
 
-  try {
-    body = JSON.stringify(data);
-  } catch (e) {
-    console.warn(e);
+  let fullUrl = url ? url : basePath + path;
+
+  let body = undefined;
+
+  if (method === 'get') {
+    const queryParams = queryString.stringify(data);
+    if (queryParams) {
+      path = `${path}?${queryParams}`;
+    }
   }
+
+  if (method === 'post') {
+    try {
+      body = JSON.stringify(data);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+
   const init = { method, headers, body, mode: 'cors', cache: 'default' };
-  const req = new Request(basePath + path, init);
+  const req = new Request(fullUrl, init);
 
   try {
     let payload = await fetch(req)
@@ -51,11 +71,11 @@ export default ({ basePath }) => ({ dispatch }) => next => async action => {
       dispatch({ type: `${action.type}_FAIL`, errors: payload.errors });
     } else {
       if (schema) payload = normalize(payload, schema);
-      dispatch({ type: `${action.type}_SUCCESS`, payload });
+      dispatch({ type: `${action.type}_SUCCESS`, data: payload });
     }
 
     if (onSuccess !== undefined) dispatch(onSuccess);
   } catch (payload) {
-    dispatch({ type: `${action.type}_FAIL`, payload });
+    dispatch({ type: `${action.type}_FAIL`, data: payload });
   }
 };

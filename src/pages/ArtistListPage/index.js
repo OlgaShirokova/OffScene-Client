@@ -15,7 +15,8 @@ export default class ArtistListPage extends Component {
   });
 
   componentDidMount() {
-    this.props.defaultSearch();
+    // this.props.defaultSearch();
+    this.props.getArtists();
   }
 
   _selectedGenresStrings = () =>

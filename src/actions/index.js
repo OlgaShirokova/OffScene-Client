@@ -8,39 +8,13 @@ const {
   GET_EVENTS,
   SIGN_IN,
   SIGN_UP,
-  MY_EVENTS,
+  GET_MY_EVENTS,
+  GET_ARTISTS,
 } = types;
-
-export const getDJ = payload => ({
-  type: GET_DJ,
-  payload,
-  [APICall]: {
-    url: `http://private-272859-offstage.apiary-mock.com/users/${payload}`,
-    method: 'GET',
-  },
-});
-
-export const defaultSearch = () => ({
-  type: DEFAULT_SEARCH,
-  [APICall]: {
-    url: 'http://private-272859-offstage.apiary-mock.com/search',
-    method: 'GET',
-    schema: schemas.djArray,
-  },
-});
 
 export const removeSelectedGenre = payload => ({
   type: REMOVE_SELECTED_GENRE,
   payload,
-});
-
-export const getEvents = () => ({
-  type: GET_EVENTS,
-  [APICall]: {
-    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
-    method: 'GET',
-    schema: schemas.eventArray,
-  },
 });
 
 export const signIn = ({ email, password }) => ({
@@ -62,9 +36,21 @@ export const signUp = payload => ({
   },
 });
 
-export const myEvents = payload => ({
-  type: MY_EVENTS,
+export const getArtists = payload => ({
+  type: GET_ARTISTS,
   [API_CALL]: {
-    path: '/events',
+    url: 'http://private-272859-offstage.apiary-mock.com/search',
+    // path: '/search',
+    data: payload,
+    schema: schemas.djArray,
+  },
+});
+
+export const getMyEvents = () => ({
+  type: GET_MY_EVENTS,
+  [API_CALL]: {
+    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
+    schema: schemas.eventArray,
+    // path: '/events',
   },
 });

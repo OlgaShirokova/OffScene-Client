@@ -20,9 +20,9 @@ const {
 
 @connect(data => ArtistProfilePage.getData)
 export default class ArtistProfilePage extends Component {
-  static getData = state => {
-    djs: state.entities.djs;
-  };
+  static getData = state => ({
+    djs: state.entities.djs,
+  });
   render() {
     return (
       <div className={styles.djDetailContainer}>
