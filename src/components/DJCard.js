@@ -49,7 +49,9 @@ class DJCard extends Component {
             <Link to={`/artists/${this.props.dj.id}`} >
               <FlatButton label="CHECK PROFILE" />
             </Link>
-            <FlatButton label="BOOK NOW!" />
+            <Link to={`/booknow/${this.props.dj.id}`}>
+              <FlatButton label="BOOK NOW!" />
+            </Link>
           </CardActions>
         </Card>
       </div>
