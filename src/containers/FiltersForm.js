@@ -16,6 +16,7 @@ import styles from './FiltersForm.css';
 class FiltersForm extends Component {
 
   handleRequestDelete = (key) => {
+    console.log('delete: ', key);
     this.props.onRemove(key);
   }
 
@@ -74,9 +75,10 @@ class FiltersForm extends Component {
             <Field
               name="price"
               component={SelectField}
+              defaultValue
               floatingLabelText="Select a plan"
             >
-              <MenuItem value="0 - 500$" primaryText="0 - 500$" />
+              <MenuItem value="0$ - 500$" primaryText="0$ - 500$" />
               <MenuItem value="500$ - 2000$" primaryText="500$ - 2000$" />
               <MenuItem value="2000$ - 5000$" primaryText="2000$ - 5000$" />
               <MenuItem value="+5000$" primaryText="+5000$" />

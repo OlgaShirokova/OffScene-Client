@@ -19,6 +19,9 @@ const entities = (state = defaultState, action) => {
 const pageDefaultState = {
   artistsPage: {
     selectedGenres: [],
+    selectedPrice: '0',
+    selectedDate: Date.now(),
+    results: [],
   },
 };
 
@@ -26,7 +29,6 @@ const pages = (state = pageDefaultState, action) => {
   if (action.type === '@@redux-form/CHANGE') {
     switch (action.meta.field) {
       case 'genre':
-        // console.log(state, ': state');
         return Object.assign({}, state, {
           artistsPage: Object.assign({}, state.artistsPage, {
             selectedGenres: state.artistsPage.selectedGenres
@@ -35,9 +37,35 @@ const pages = (state = pageDefaultState, action) => {
           }),
         });
 
+      case 'date':
+        return Object.assign({}, state, {
+          artistsPage: Object.assign({}, state.artistsPage, {
+            selectedDate: action.payload.getTime(),
+          }),
+        });
+
+      case 'price':
+        return Object.assign({}, state, {
+          artistsPage: Object.assign({}, state.artistsPage, {
+            selectedPrice: action.payload,
+          }),
+        });
+
       default:
         return state;
     }
+  }
+
+  if (action.type === 'FILTER_SEARCH') {
+    console.log(action);
+  }
+
+  if (action.type === 'FILTER_SEARCH_SUCCESS') {
+    return Object.assign({}, state, {
+      artistsPage: Object.assign({}, state.artistsPage, {
+        results: action.data.result,
+      }),
+    });
   }
 
   if (action.type === 'REMOVE_SELECTED_GENRE') {

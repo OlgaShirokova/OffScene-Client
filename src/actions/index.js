@@ -9,9 +9,14 @@ export const getDJ = (payload) => ({
   },
 });
 
-// export const filterSearch = () => ({
-//   type: 'FILTER_SEARCH',
-// });
+export const filterSearch = (payload) => ({
+  type: 'FILTER_SEARCH',
+  [APICall]: {
+    url: `http://private-272859-offstage.apiary-mock.com/search?${payload}`,
+    method: 'GET',
+    schema: schemas.djArray,
+  },
+});
 
 
 export const defaultSearch = () => ({
