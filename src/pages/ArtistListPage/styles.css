@@ -4,8 +4,6 @@
   padding: 0 20px;
 }
 
-.paperContainer {
-}
 
 .djListContainer {
   display: flex;
@@ -15,4 +13,13 @@
 
 .djContainer {
   flex-basis: 200px;
+}
+
+@media (max-width: 835px) {
+  .artistsContainer {
+    flex-direction: column;
+  }
+  .paperContainer {
+    margin-bottom: 30px;
+  }
 }

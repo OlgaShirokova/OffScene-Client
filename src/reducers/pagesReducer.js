@@ -1,6 +1,10 @@
 import types from 'actions/types';
-const { REMOVE_SELECTED_GENRE, GET_DJ, FILTER_SEARCH_SUCCESS } = types;
-
+const {
+  REMOVE_SELECTED_GENRE,
+  GET_DJ,
+  FILTER_SEARCH_SUCCESS,
+  GET_ARTISTS_SUCCESS,
+} = types;
 const INITIAL_STATE = {
   artistsPage: {
     selectedGenres: [],
@@ -27,7 +31,7 @@ export default function pagesReducer(state = INITIAL_STATE, action) {
     }
   }
 
-  if (action.type === FILTER_SEARCH_SUCCESS) {
+  if (action.type === GET_ARTISTS_SUCCESS) {
     return Object.assign({}, state, {
       artistsPage: Object.assign({}, state.artistsPage, {
         results: action.data.result,
