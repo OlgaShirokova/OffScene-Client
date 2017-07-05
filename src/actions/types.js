@@ -17,4 +17,5 @@ export default defineActionTypes([
   'GET_MY_EVENTS',
   'GET_ARTISTS',
   'FILTER_SEARCH',
+  `POST_OFFER`,
 ]);

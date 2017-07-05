@@ -2,8 +2,12 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux';
+import * as ActionCreators from 'actions';
 
-export default class DialogExampleSimple extends React.Component {
+@connect(data => DialogSimple.getData, ActionCreators)
+export default class DialogSimple extends React.Component {
+  static getData = state => ({});
   state = {
     open: false,
   };
@@ -13,6 +17,7 @@ export default class DialogExampleSimple extends React.Component {
   };
 
   handleClose = () => {
+    this.props.postOffer();
     this.setState({ open: false });
   };
 
@@ -56,3 +61,6 @@ export default class DialogExampleSimple extends React.Component {
     );
   }
 }
+
+// export default connect(ActionCreators)(DialogSimple)
+// export default DialogSimple

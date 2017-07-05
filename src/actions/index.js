@@ -9,6 +9,7 @@ const {
   SIGN_UP,
   GET_MY_EVENTS,
   GET_ARTISTS,
+  POST_OFFER,
 } = types;
 
 export const removeSelectedGenre = payload => ({
@@ -49,6 +50,15 @@ export const getMyEvents = () => ({
   type: GET_MY_EVENTS,
   [API_CALL]: {
     url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
+    schema: schemas.eventArray,
+    // path: '/events',
+  },
+});
+
+export const postOffer = () => ({
+  type: POST_OFFER,
+  [API_CALL]: {
+    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/offers',
     schema: schemas.eventArray,
     // path: '/events',
   },
