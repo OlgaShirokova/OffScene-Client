@@ -6,20 +6,14 @@ import { object, func } from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import { SelectField } from 'redux-form-material-ui';
 import { Payment, LocationOn } from 'material-ui-icons';
 import * as ActionCreators from 'actions';
-
 import styles from './styles.css';
 import { ArtistCard } from 'components';
 
-// export default reduxForm({
-//   form: 'bookNowForm',
-// })(BookNow);
-
-// @reduxForm()
-// @reduxForm({ form: 'bookNowForm' })
 class NewEventPage extends Component {
   static getData = state => ({
     djs: state.entities.djs,
