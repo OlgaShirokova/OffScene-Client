@@ -5,3 +5,7 @@ export function getToken() {
 export function saveToken(token) {
   return localStorage.setItem('OFF_STAGE_TOKEN', token);
 }
+
+export function deleteToken() {
+  return localStorage.removeItem('OFF_STAGE_TOKEN', token);
+}
