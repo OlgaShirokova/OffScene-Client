@@ -12,7 +12,7 @@ import { SelectField } from 'redux-form-material-ui';
 import { Payment, LocationOn } from 'material-ui-icons';
 import * as ActionCreators from 'actions';
 import styles from './styles.css';
-import { ArtistCard } from 'components';
+import { ArtistCard, Dialog } from 'components';
 
 class NewEventPage extends Component {
   static getData = state => ({
@@ -71,6 +71,7 @@ class NewEventPage extends Component {
                   <MenuItem value="Los Angeles" primaryText="Los Angeles" />
                 </Field>
                 <RaisedButton label="Book now" primary={!0} />
+                <Dialog />
               </div>
             </form>
           </Paper>
