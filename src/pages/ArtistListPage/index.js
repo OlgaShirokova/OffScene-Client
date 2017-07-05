@@ -90,7 +90,7 @@ export default class ArtistListPage extends Component {
       musicGenre
     )}&city='Barcelona'&distance=2000`;
 
-    this.props.filterSearchProp(params);
+    this.props.getArtists(params);
   };
 
   render() {

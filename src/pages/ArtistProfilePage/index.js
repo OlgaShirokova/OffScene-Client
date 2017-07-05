@@ -80,7 +80,12 @@ export default class ArtistProfilePage extends Component {
           <CardActions>
             <RaisedButton label="SEE CONTRACT" primary fullWidth />
             <Divider className={styles.divider} />
-            <RaisedButton label="BOOK NOW!" primary fullWidth />
+            <Link
+              to={`/book/${this.props.match.params.id}`}
+              className={styles.link}
+            >
+              <RaisedButton label="BOOK NOW!" primary fullWidth />
+            </Link>
           </CardActions>
         </Card>
         <Paper className={styles.paper}>

@@ -11,6 +11,7 @@ const {
   SIGN_UP,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAIL,
+  GET_ARTISTS_SUCCESS,
 } = types;
 
 const INITIAL_STATE = {
@@ -56,7 +57,7 @@ export default function pagesReducer(state = INITIAL_STATE, action) {
     }
   }
 
-  if (action.type === FILTER_SEARCH_SUCCESS) {
+  if (action.type === GET_ARTISTS_SUCCESS) {
     return Object.assign({}, state, {
       artistsPage: Object.assign({}, state.artistsPage, {
         results: action.data.result,
