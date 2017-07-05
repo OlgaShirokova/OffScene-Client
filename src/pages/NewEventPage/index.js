@@ -6,6 +6,7 @@ import { object, func } from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import { SelectField } from 'redux-form-material-ui';
@@ -58,14 +59,10 @@ class NewEventPage extends Component {
                 </Subheader>
                 <Field
                   name="city"
-                  component={SelectField}
-                  floatingLabelText="Select a city"
-                >
-                  <MenuItem value="Barcelona" primaryText="Barcelona" />
-                  <MenuItem value="Madrid" primaryText="Madrid" />
-                  <MenuItem value="Valencia" primaryText="Valencia" />
-                  <MenuItem value="Los Angeles" primaryText="Los Angeles" />
-                </Field>
+                  component={TextField}
+                  type="text"
+                  placeholder="City"
+                />
                 <Dialog />
               </div>
             </form>
