@@ -26,3 +26,7 @@
 .socialMedia {
   margin-left: 16px;
 }
+
+.link {
+  padding: 0 !important;
+}
