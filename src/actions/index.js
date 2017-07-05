@@ -9,6 +9,9 @@ const {
   SIGN_UP,
   GET_MY_EVENTS,
   GET_ARTISTS,
+  SIGN_OUT,
+  SIGNUP_PAGE_FORM_CHANGE,
+  LOGIN_PAGE_FORM_CHANGE,
 } = types;
 
 export const removeSelectedGenre = payload => ({
@@ -52,4 +55,18 @@ export const getMyEvents = () => ({
     schema: schemas.eventArray,
     // path: '/events',
   },
+});
+
+export const signOut = () => ({
+  type: SIGN_OUT,
+});
+
+export const loginPageFormChange = payload => ({
+  type: LOGIN_PAGE_FORM_CHANGE,
+  payload,
+});
+
+export const signupPageFormChange = payload => ({
+  type: SIGNUP_PAGE_FORM_CHANGE,
+  payload,
 });
