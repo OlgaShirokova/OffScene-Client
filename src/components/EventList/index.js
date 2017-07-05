@@ -20,7 +20,6 @@ export default class EventList extends Component {
   });
 
   componentDidMount() {
-    // this.props.getEvents();
     this.props.getMyEvents();
   }
 
@@ -47,9 +46,6 @@ export default class EventList extends Component {
           {Object.keys(this.props.events)
             .map(key => this.props.events[key])
             .map(event => {
-              let s = event.status;
-              // same category: will end up in tab past/canceled
-
               return (
                 <TableRow key={event.id}>
                   <TableRowColumn>

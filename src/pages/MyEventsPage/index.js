@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import * as ActionCreators from 'actions';
+import { connect } from 'react-redux';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import { EventList } from 'components';
 import styles from './styles.css';
 
-export default class MyEventsPage extends Component {
+class MyEventsPage extends Component {
   state = {
     slideIndex: 0,
   };
@@ -65,6 +68,7 @@ export default class MyEventsPage extends Component {
   };
 
   render() {
+    console.log(this.props.listOfEvents);
     return (
       <div className={styles.yourEvents}>
         {this._renderTabs()}
@@ -72,3 +76,17 @@ export default class MyEventsPage extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const events = [[], [], [], [], []];
+  Object.values(state.entities.events).map(ev => {
+    events[ev.status].push(ev);
+  });
+  return { listOfEvents: events };
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(ActionCreators, dispatch) };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyEventsPage);
