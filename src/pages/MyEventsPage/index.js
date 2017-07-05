@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import * as ActionCreators from 'actions';
 import { connect } from 'react-redux';
 import { Tabs, Tab } from 'material-ui/Tabs';
@@ -12,6 +11,10 @@ class MyEventsPage extends Component {
     slideIndex: 0,
   };
 
+  componentWillMount() {
+    this.props.getMyEvents();
+  }
+
   _handleChange = value => {
     this.setState({
       slideIndex: value,
@@ -22,7 +25,7 @@ class MyEventsPage extends Component {
     return (
       <div>
         <h4 className={styles.subtitle}>YOUR EVENTS</h4>
-        <EventList num={k} />
+        <EventList listOfEvents={this.props.listOfEvents[k]} />
       </div>
     );
   };
@@ -68,7 +71,6 @@ class MyEventsPage extends Component {
   };
 
   render() {
-    console.log(this.props.listOfEvents);
     return (
       <div className={styles.yourEvents}>
         {this._renderTabs()}
@@ -85,8 +87,4 @@ function mapStateToProps(state) {
   return { listOfEvents: events };
 }
 
-function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(ActionCreators, dispatch) };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyEventsPage);
+export default connect(mapStateToProps, ActionCreators)(MyEventsPage);

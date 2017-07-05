@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { func, object, number } from 'prop-types';
 import {
   Table,
   TableBody,
@@ -10,19 +8,9 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { Rating } from 'material-ui-rating';
-import * as ActionCreators from 'actions';
 import styles from 'pages/Screens.css';
 
-@connect(data => EventList.getData, ActionCreators)
 export default class EventList extends Component {
-  static getData = state => ({
-    events: state.entities.events,
-  });
-
-  componentDidMount() {
-    this.props.getMyEvents();
-  }
-
   ratings = value => {
     if (value === null) return '-';
     return (
@@ -43,29 +31,27 @@ export default class EventList extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Object.keys(this.props.events)
-            .map(key => this.props.events[key])
-            .map(event => {
-              return (
-                <TableRow key={event.id}>
-                  <TableRowColumn>
-                    {event.date.slice(0, 9)}
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    {event.location}
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    {event.price}
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    {this.ratings(event.djRating)}
-                  </TableRowColumn>
-                  <TableRowColumn>
-                    {this.ratings(event.orgRating)}
-                  </TableRowColumn>
-                </TableRow>
-              );
-            })}
+          {this.props.listOfEvents.map(event => {
+            return (
+              <TableRow key={event.id}>
+                <TableRowColumn>
+                  {event.date.slice(0, 9)}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {event.location}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {event.price}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {this.ratings(event.djRating)}
+                </TableRowColumn>
+                <TableRowColumn>
+                  {this.ratings(event.orgRating)}
+                </TableRowColumn>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     );
