@@ -27,11 +27,7 @@ class NewEventPage extends Component {
       return (
         <div>
           <Link to={`/artists/${this.props.match.params.id}`}>
-            <RaisedButton
-              label="REFER TO ARTISTS PAGE"
-              primary={!0}
-              fullWidth={!0}
-            />
+            <RaisedButton label="REFER TO ARTISTS PAGE" primary fullWidth />
           </Link>
         </div>
       );
@@ -70,7 +66,6 @@ class NewEventPage extends Component {
                   <MenuItem value="Valencia" primaryText="Valencia" />
                   <MenuItem value="Los Angeles" primaryText="Los Angeles" />
                 </Field>
-                <RaisedButton label="Book now" primary={!0} />
                 <Dialog />
               </div>
             </form>

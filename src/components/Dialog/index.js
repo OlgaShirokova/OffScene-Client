@@ -24,7 +24,7 @@ export default class DialogExampleSimple extends React.Component {
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label="Submit"
+        label="Accept"
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.handleClose}
@@ -33,16 +33,24 @@ export default class DialogExampleSimple extends React.Component {
 
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
+        <RaisedButton
+          label="BOOK NOW"
+          primary={true}
+          fullWidth
+          onTouchTap={this.handleOpen}
+        />
         <Dialog
-          title="Dialog With Actions"
+          title="Your offer has been placed!"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          The actions in this window were passed in as an array of React
-          objects.
+          You have placed an order to: <br />
+          - DJ name: <br />
+          - Location: <br />
+          - Date: <br />
+          - Amount:
         </Dialog>
       </div>
     );
