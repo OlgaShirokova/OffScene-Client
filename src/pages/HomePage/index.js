@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import { object } from 'prop-types';
 import * as ActionCreators from 'actions';
 
+import Carousel from 'nuka-carousel';
+
 @connect(data => HomePage.getData, ActionCreators)
 export default class HomePage extends Component {
   static getData = state => ({
@@ -18,14 +20,17 @@ export default class HomePage extends Component {
   componentDidMount() {
     this.props.getArtists();
   }
+  // mixins: [Carousel.ControllerMixin];
 
   render() {
     console.log(this.props);
     return (
       <div>
-        <div className={styles.imgs}>
-          <img className={styles.imgHome} src={imageTable} alt="" />
-          <img className={styles.imgHome} src={imageDj} alt="" />
+        <div className={styles.containerSlider}>
+          <Carousel autoplay wrapAround={true} width={'80%'}>
+            <img className={styles.imgHome} src={imageTable} alt="" />
+            <img className={styles.imgHome} src={imageDj} alt="" />
+          </Carousel>
         </div>
         <div className={options.root}>
           <h4 className={styles.subtitle}>NEAREST DJS AROUND YOU</h4>
