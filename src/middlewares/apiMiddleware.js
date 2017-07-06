@@ -1,5 +1,6 @@
 import { normalize, schema as Schema } from 'normalizr';
 import { getToken, saveToken } from 'utils/localStorage';
+import { signOut } from 'actions';
 import queryString from 'query-string';
 const genre = new Schema.Entity('genres');
 const dj = new Schema.Entity('djs', {
@@ -68,7 +69,11 @@ export default ({ basePath }) => ({ dispatch }) => next => async action => {
     }
 
     if (payload && payload.errors) {
-      dispatch({ type: `${action.type}_FAIL`, errors: payload.errors });
+      if (payload.errors.join() === 'Not Authorized') {
+        dispatch(signOut());
+      } else {
+        dispatch({ type: `${action.type}_FAIL`, errors: payload.errors });
+      }
     } else {
       if (schema) payload = normalize(payload, schema);
       dispatch({ type: `${action.type}_SUCCESS`, data: payload });
