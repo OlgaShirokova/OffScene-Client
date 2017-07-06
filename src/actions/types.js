@@ -21,4 +21,5 @@ export default defineActionTypes([
   'LOGIN_PAGE_FORM_CHANGE',
   'SIGNUP_PAGE_FORM_CHANGE',
   'RESET_NOTIFICATION',
+  `POST_OFFER`,
 ]);

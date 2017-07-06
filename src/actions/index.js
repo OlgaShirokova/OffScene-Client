@@ -13,6 +13,7 @@ const {
   SIGNUP_PAGE_FORM_CHANGE,
   LOGIN_PAGE_FORM_CHANGE,
   RESET_NOTIFICATION,
+  POST_OFFER,
 } = types;
 
 export const removeSelectedGenre = payload => ({
@@ -74,4 +75,13 @@ export const signupPageFormChange = payload => ({
 
 export const resetNotification = () => ({
   type: RESET_NOTIFICATION,
+});
+
+export const postOffer = () => ({
+  type: POST_OFFER,
+  [API_CALL]: {
+    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/offers',
+    // schema: schemas.eventArray,
+    // path: '/events',
+  },
 });

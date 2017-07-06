@@ -6,13 +6,39 @@ import { object, func } from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import { SelectField } from 'redux-form-material-ui';
-import { Payment, LocationOn } from 'material-ui-icons';
+import { SelectField, DatePicker } from 'redux-form-material-ui';
+import { Payment, LocationOn, BookmarkBorder } from 'material-ui-icons';
 import * as ActionCreators from 'actions';
 import styles from './styles.css';
-import { ArtistCard } from 'components';
+import { ArtistCard, Dialog } from 'components';
+
+const renderTextField = ({
+  input,
+  label,
+  meta: { touched, error },
+  ...custom
+}) =>
+  <TextField
+    hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />;
+
+const validate = values => {
+  const errors = {};
+  const requiredFields = ['date', 'city', 'price'];
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required';
+    }
+  });
+  return errors;
+};
 
 class NewEventPage extends Component {
   static getData = state => ({
@@ -27,11 +53,7 @@ class NewEventPage extends Component {
       return (
         <div>
           <Link to={`/artists/${this.props.match.params.id}`}>
-            <RaisedButton
-              label="REFER TO ARTISTS PAGE"
-              primary={!0}
-              fullWidth={!0}
-            />
+            <RaisedButton label="REFER TO ARTISTS PAGE" primary fullWidth />
           </Link>
         </div>
       );
@@ -39,38 +61,45 @@ class NewEventPage extends Component {
     return (
       <div className={styles.bookNowContainer}>
         <div>
-          <Paper className={styles.bookNow}>
-            <form className={styles.formContainer}>
-              <div className={styles.form}>
+          <Paper style={{ padding: '20px' }}>
+            <form>
+              <div>
                 <Subheader inset={false} className={styles.subheader}>
-                  <Payment className={styles.icon} />
-                  Payment
+                  <BookmarkBorder />
+                  <span>Select a date</span>
                 </Subheader>
                 <Field
-                  name="price"
-                  component={SelectField}
-                  floatingLabelText="Select a plan"
-                >
-                  <MenuItem value="0 - 500$" primaryText="0 - 500$" />
-                  <MenuItem value="500$ - 2000$" primaryText="500$ - 2000$" />
-                  <MenuItem value="2000$ - 5000$" primaryText="2000$ - 5000$" />
-                  <MenuItem value="+5000$" primaryText="+5000$" />
-                </Field>
+                  name="date"
+                  component={DatePicker}
+                  floatingLabelText="What is the day of the event?"
+                />
+              </div>
+              <div>
                 <Subheader inset={false} className={styles.subheader}>
-                  <LocationOn className={styles.icon} />
-                  Location
+                  <LocationOn />
+                  <span>Location</span>
                 </Subheader>
                 <Field
+                  id={'city'}
                   name="city"
-                  component={SelectField}
-                  floatingLabelText="Select a city"
-                >
-                  <MenuItem value="Barcelona" primaryText="Barcelona" />
-                  <MenuItem value="Madrid" primaryText="Madrid" />
-                  <MenuItem value="Valencia" primaryText="Valencia" />
-                  <MenuItem value="Los Angeles" primaryText="Los Angeles" />
-                </Field>
-                <RaisedButton label="Book now" primary={!0} />
+                  component={renderTextField}
+                  type="text"
+                  placeholder="City"
+                />
+              </div>
+              <div>
+                <Subheader inset={false} className={styles.subheader}>
+                  <Payment />
+                  <span>Payment</span>
+                </Subheader>
+                <Field
+                  id={'price'}
+                  name="price"
+                  component={renderTextField}
+                  type="text"
+                  placeholder="Place your offer ($)"
+                />
+                <Dialog id={this.props.match.params.id} />
               </div>
             </form>
           </Paper>
@@ -91,4 +120,5 @@ NewEventPage.propTypes = {
 
 export default reduxForm({
   form: 'bookNowForm',
+  validate,
 })(connect(data => NewEventPage.getData, ActionCreators)(NewEventPage));
