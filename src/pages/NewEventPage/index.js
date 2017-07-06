@@ -9,11 +9,36 @@ import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import { SelectField } from 'redux-form-material-ui';
-import { Payment, LocationOn } from 'material-ui-icons';
+import { SelectField, DatePicker } from 'redux-form-material-ui';
+import { Payment, LocationOn, BookmarkBorder } from 'material-ui-icons';
 import * as ActionCreators from 'actions';
 import styles from './styles.css';
 import { ArtistCard, Dialog } from 'components';
+
+const renderTextField = ({
+  input,
+  label,
+  meta: { touched, error },
+  ...custom
+}) =>
+  <TextField
+    hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />;
+
+const validate = values => {
+  const errors = {};
+  const requiredFields = ['date', 'city', 'price'];
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required';
+    }
+  });
+  return errors;
+};
 
 class NewEventPage extends Component {
   static getData = state => ({
@@ -40,15 +65,14 @@ class NewEventPage extends Component {
             <form className={styles.formContainer}>
               <div className={styles.form}>
                 <Subheader inset={false} className={styles.subheader}>
-                  <Payment className={styles.icon} />
-                  Payment
+                  <BookmarkBorder className={styles.icon} />
+                  Select a date
                 </Subheader>
                 <Field
-                  id={'price'}
-                  name="price"
-                  component={TextField}
-                  type="text"
-                  placeholder="Place your offer ($)"
+                  name="date"
+                  component={DatePicker}
+                  format={null}
+                  floatingLabelText="What is the day of the event?"
                 />
                 <Subheader inset={false} className={styles.subheader}>
                   <LocationOn className={styles.icon} />
@@ -57,9 +81,20 @@ class NewEventPage extends Component {
                 <Field
                   id={'city'}
                   name="city"
-                  component={TextField}
+                  component={renderTextField}
                   type="text"
                   placeholder="City"
+                />
+                <Subheader inset={false} className={styles.subheader}>
+                  <Payment className={styles.icon} />
+                  Payment
+                </Subheader>
+                <Field
+                  id={'price'}
+                  name="price"
+                  component={renderTextField}
+                  type="text"
+                  placeholder="Place your offer ($)"
                 />
                 <Dialog id={this.props.match.params.id} />
               </div>
@@ -81,5 +116,6 @@ NewEventPage.propTypes = {
 };
 
 export default reduxForm({
+  validate,
   form: 'bookNowForm',
 })(connect(data => NewEventPage.getData, ActionCreators)(NewEventPage));
