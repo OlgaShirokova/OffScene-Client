@@ -12,6 +12,7 @@ const {
   SIGN_OUT,
   SIGNUP_PAGE_FORM_CHANGE,
   LOGIN_PAGE_FORM_CHANGE,
+  RESET_NOTIFICATION,
 } = types;
 
 export const removeSelectedGenre = payload => ({
@@ -69,4 +70,8 @@ export const loginPageFormChange = payload => ({
 export const signupPageFormChange = payload => ({
   type: SIGNUP_PAGE_FORM_CHANGE,
   payload,
+});
+
+export const resetNotification = () => ({
+  type: RESET_NOTIFICATION,
 });

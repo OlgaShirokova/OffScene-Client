@@ -20,4 +20,5 @@ export default defineActionTypes([
   'SIGN_OUT',
   'LOGIN_PAGE_FORM_CHANGE',
   'SIGNUP_PAGE_FORM_CHANGE',
+  'RESET_NOTIFICATION',
 ]);
