@@ -14,6 +14,25 @@ const {
   GET_ARTISTS_SUCCESS,
 } = types;
 
+export const LOGIN_PAGE_INITIAL_STATE = {
+  form: {
+    email: '',
+    password: '',
+    errors: null,
+  },
+};
+
+export const SIGNUP_PAGE_INITIAL_STATE = {
+  form: {
+    email: '',
+    password: '',
+    role: 0,
+    errors: null,
+  },
+  loading: false,
+  success: false,
+};
+
 const INITIAL_STATE = {
   artistsPage: {
     selectedGenres: [],
@@ -21,23 +40,8 @@ const INITIAL_STATE = {
     selectedDate: Date.now(),
     results: [],
   },
-  loginPage: {
-    form: {
-      email: '',
-      password: '',
-      errors: null,
-    },
-  },
-  signupPage: {
-    form: {
-      email: '',
-      password: '',
-      role: 0,
-      errors: null,
-    },
-    loading: false,
-    success: false,
-  },
+  loginPage: LOGIN_PAGE_INITIAL_STATE,
+  signupPage: SIGNUP_PAGE_INITIAL_STATE,
 };
 
 export default function pagesReducer(state = INITIAL_STATE, action) {
