@@ -5,3 +5,4 @@ export { default as SignupPage } from './SignupPage';
 export { default as HomePage } from './HomePage';
 export { default as ArtistProfilePage } from './ArtistProfilePage';
 export { default as NewEventPage } from './NewEventPage';
+export { default as NotFoundPage } from './NotFoundPage';
