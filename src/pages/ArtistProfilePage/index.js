@@ -103,6 +103,18 @@ export default class ArtistProfilePage extends Component {
             {'Put some events here'}
           </div>
           <Divider />
+          <div style={{ paddingLeft: 16, paddingBottom: 9 }}>
+            <Subheader style={{ padding: 0, fontWeight: '100' }}>
+              Price Monday-Friday
+            </Subheader>
+            {'$ '}
+            {this.props.djs[this.props.match.params.id].priceWe}
+            <Subheader style={{ padding: 0, fontWeight: '100' }}>
+              Price Saturday & Sunday
+            </Subheader>
+            {'$ '}
+            {this.props.djs[this.props.match.params.id].priceWd}
+          </div>
         </Paper>
       </div>
     );
