@@ -58,12 +58,13 @@ class NewEventPage extends Component {
                   Location
                 </Subheader>
                 <Field
+                  id={'city'}
                   name="city"
                   component={TextField}
                   type="text"
                   placeholder="City"
                 />
-                <Dialog />
+                <Dialog id={this.props.match.params.id} />
               </div>
             </form>
           </Paper>

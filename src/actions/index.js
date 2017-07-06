@@ -59,7 +59,7 @@ export const postOffer = () => ({
   type: POST_OFFER,
   [API_CALL]: {
     url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/offers',
-    schema: schemas.eventArray,
+    // schema: schemas.eventArray,
     // path: '/events',
   },
 });

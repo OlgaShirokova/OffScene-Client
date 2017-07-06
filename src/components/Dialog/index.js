@@ -3,11 +3,14 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
+import { object } from 'prop-types';
 import * as ActionCreators from 'actions';
 
 @connect(data => DialogSimple.getData, ActionCreators)
 export default class DialogSimple extends React.Component {
-  static getData = state => ({});
+  static getData = state => ({
+    djs: state.entities.djs,
+  });
   state = {
     open: false,
   };
@@ -52,7 +55,7 @@ export default class DialogSimple extends React.Component {
           onRequestClose={this.handleClose}
         >
           You have placed an order to: <br />
-          - DJ name: <br />
+          - DJ name: <b>{this.props.djs[this.props.id].name}</b> <br />
           - Location: <br />
           - Date: <br />
           - Amount:
@@ -61,6 +64,11 @@ export default class DialogSimple extends React.Component {
     );
   }
 }
+
+DialogSimple.propTypes = {
+  id: object.isRequired,
+  djs: object.isRequired,
+};
 
 // export default connect(ActionCreators)(DialogSimple)
 // export default DialogSimple
