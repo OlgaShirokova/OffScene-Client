@@ -107,7 +107,32 @@ export default class ArtistListPage extends Component {
 
     // this.props.getArtists();
     // };
-    console.log(555);
+    // console.log(555);
+
+    const musicGenres = this.props.selectedGenres;
+    const date =
+      this.props.values && this.props.values.date
+        ? this.props.values.date.getTime()
+        : Date.now();
+
+    let priceMin = 0;
+    let priceMax = 99999999;
+
+    if (this.values && this.values.price) {
+      [priceMin, priceMax] = this.props.values.price.split(' - ');
+      if (priceMax !== undefined) {
+        //   //   // the selected range of price is X$ - Y$
+        priceMin = priceMin.slice(0, priceMin.length - 1);
+        priceMax = priceMax.slice(0, priceMax.length - 1);
+      } else {
+        //   //   // the selected range of price is +Z$
+        //   //   // priceMax will be undefined
+        priceMin = priceMin.slice(1, priceMin.length - 1);
+      }
+    }
+    console.log(date, musicGenres, priceMax, priceMin);
+
+    this.props.getArtists({ date, musicGenres, priceMin, priceMax });
   };
 
   render() {
