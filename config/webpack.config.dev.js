@@ -86,16 +86,17 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: ['.js', '.json', '.jsx'],
     alias: {
-      'actions': path.resolve(__dirname, '../src/actions/'),
-      'assets': path.resolve(__dirname, '../src/assets/'),
-      'components': path.resolve(__dirname, '../src/components/'),
-      'pages': path.resolve(__dirname, '../src/pages/'),
-      'reducers': path.resolve(__dirname, '../src/reducers/'),
-      'utils': path.resolve(__dirname, '../src/utils/'),
-      'middlewares': path.resolve(__dirname, '../src/middlewares/'),
-      'router': path.resolve(__dirname, '../src/router/'),
-      'store': path.resolve(__dirname, '../src/store/'),
-      'setup': path.resolve(__dirname, '../src/setup/'),
+      actions: path.resolve(__dirname, '../src/actions/'),
+      assets: path.resolve(__dirname, '../src/assets/'),
+      components: path.resolve(__dirname, '../src/components/'),
+      pages: path.resolve(__dirname, '../src/pages/'),
+      reducers: path.resolve(__dirname, '../src/reducers/'),
+      utils: path.resolve(__dirname, '../src/utils/'),
+      middlewares: path.resolve(__dirname, '../src/middlewares/'),
+      router: path.resolve(__dirname, '../src/router/'),
+      store: path.resolve(__dirname, '../src/store/'),
+      hoc: path.resolve(__dirname, '../src/hoc/'),
+      setup: path.resolve(__dirname, '../src/setup/'),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -125,7 +126,6 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -159,16 +159,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader", // compiles Sass to CSS
-          options: {
-            includePaths: ["absolute/path/a", "absolute/path/b"]
-          }
-        }]
+        use: [
+          {
+            loader: 'style-loader', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+          {
+            loader: 'sass-loader', // compiles Sass to CSS
+            options: {
+              includePaths: ['absolute/path/a', 'absolute/path/b'],
+            },
+          },
+        ],
       },
       // "url" loader works like "file" loader except that it embeds assets
       // smaller than specified limit in bytes as data URLs to avoid requests.
@@ -187,7 +191,6 @@ module.exports = {
         include: paths.appSrc,
         loader: require.resolve('babel-loader'),
         options: {
-
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
