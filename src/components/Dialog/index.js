@@ -56,7 +56,8 @@ export default class DialogSimple extends React.Component {
           onRequestClose={this.handleClose}
         >
           You have placed an order to: <br />
-          - DJ name: <b>{this.props.djs[this.props.id].name}</b> <br />
+          - DJ name: <b>{this.props.djs[this.props.id].name}</b>
+          <br />
           - Location: <br />
           - Date: <b>{Date(this.props.selectedDate)}</b>
           <br />

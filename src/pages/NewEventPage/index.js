@@ -44,15 +44,12 @@ class NewEventPage extends Component {
                   Payment
                 </Subheader>
                 <Field
+                  id={'price'}
                   name="price"
-                  component={SelectField}
-                  floatingLabelText="Select a plan"
-                >
-                  <MenuItem value="0 - 500$" primaryText="0 - 500$" />
-                  <MenuItem value="500$ - 2000$" primaryText="500$ - 2000$" />
-                  <MenuItem value="2000$ - 5000$" primaryText="2000$ - 5000$" />
-                  <MenuItem value="+5000$" primaryText="+5000$" />
-                </Field>
+                  component={TextField}
+                  type="text"
+                  placeholder="Place your offer ($)"
+                />
                 <Subheader inset={false} className={styles.subheader}>
                   <LocationOn className={styles.icon} />
                   Location
