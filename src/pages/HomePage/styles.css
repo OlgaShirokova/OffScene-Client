@@ -6,3 +6,12 @@
   border-bottom: 1px solid #f3e000;
 }
 
+.imgs {
+  display: flex;
+  flex-direction: row;
+}
+
+.imgHome {
+  width: 50%;
+  height: 50%;
+}
