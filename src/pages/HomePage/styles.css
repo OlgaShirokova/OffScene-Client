@@ -6,3 +6,9 @@
   border-bottom: 1px solid #f3e000;
 }
 
+.containerSlider{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
