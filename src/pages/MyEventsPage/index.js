@@ -21,6 +21,31 @@ class MyEventsPage extends Component {
     });
   };
 
+  _textView = i => {
+    const text = [
+      'Events awaiting for DJs confirmation.',
+      'Previous events and the onces canceled/rejected.',
+      'Events awaiting for Organizers confirmation.',
+      'Upcoming and accepted events.',
+    ];
+    return text[i];
+  };
+
+  _View = () => {
+    let views = [];
+    for (let i = 0; i < 4; i++) {
+      views.push(
+        <div key={i}>
+          <h2 className={styles.subtitle}>
+            {this._textView(i)}
+          </h2>
+          {this._renderYourEvents(i)}
+        </div>
+      );
+    }
+    return views;
+  };
+
   _renderYourEvents = k => {
     return (
       <div>
@@ -35,36 +60,15 @@ class MyEventsPage extends Component {
       <div>
         <Tabs onChange={this._handleChange} value={this.state.slideIndex}>
           <Tab label="WAITING FOR DJ" value={0} />
-          <Tab label="WAITING FOR ORG" value={1} />
-          <Tab label="ACCEPTED/UPCOMING" value={2} />
-          <Tab label="PAST/CANCELED" value={3} />
+          <Tab label="WAITING FOR ORG" value={2} />
+          <Tab label="ACCEPTED/UPCOMING" value={3} />
+          <Tab label="PAST/CANCELED" value={1} />
         </Tabs>
         <SwipeableViews
           index={this.state.slideIndex}
           onChangeIndex={this.handleChange}
         >
-          <div>
-            <h2 className={styles.subtitle}>
-              Events awaiting for DJs confirmation.
-            </h2>
-            {this._renderYourEvents(0)}
-          </div>
-          <div className={styles.slide}>
-            <h2 className={styles.subtitle}>
-              Events awaiting for Organizers confirmation.
-            </h2>
-            {this._renderYourEvents(2)}
-          </div>
-          <div className={styles.slide}>
-            <h2 className={styles.subtitle}>Upcoming and accepted events.</h2>
-            {this._renderYourEvents(3)}
-          </div>
-          <div className={styles.slide}>
-            <h2 className={styles.subtitle}>
-              Previous events and the onces canceled/rejected.
-            </h2>
-            {this._renderYourEvents(1)}
-          </div>
+          {this._View()}
         </SwipeableViews>
       </div>
     );
@@ -80,9 +84,10 @@ class MyEventsPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const events = [[], [], [], [], []];
+  const events = [[], [], [], []];
   Object.values(state.entities.events).map(ev => {
-    events[ev.status].push(ev);
+    if (ev.status === 4) events[1].push(ev);
+    else events[ev.status].push(ev);
   });
   return { listOfEvents: events };
 }

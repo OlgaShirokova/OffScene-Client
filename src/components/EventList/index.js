@@ -41,7 +41,7 @@ export default class EventList extends Component {
                   {event.location}
                 </TableRowColumn>
                 <TableRowColumn>
-                  {event.price}
+                  {event.status}
                 </TableRowColumn>
                 <TableRowColumn>
                   {this.ratings(event.djRating)}
