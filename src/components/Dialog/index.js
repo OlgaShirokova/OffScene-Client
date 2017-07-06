@@ -11,7 +11,11 @@ export default class DialogSimple extends React.Component {
   static getData = state => ({
     djs: state.entities.djs,
     selectedDate: state.pages.artistsPage.results,
-    values: state.form.bookNowForm.values,
+    values: state.form.bookNowForm.values || {
+      date: new Date(),
+      location: 'Barcelona',
+      price: 8000,
+    },
   });
   state = {
     open: false,
@@ -22,11 +26,20 @@ export default class DialogSimple extends React.Component {
   };
 
   handleClose = () => {
-    this.props.postOffer();
+    console.log(this.props.values);
+    this.props.postOffer({
+      date: this.props.values.date
+        ? this.props.values.date.getTime()
+        : Date.now(),
+      djId: Number(this.props.id),
+      location: this.props.values.city ? this.props.values.city : 'Barcelona',
+      price: this.props.values.price ? this.props.values.price : 8000,
+    });
     this.setState({ open: false });
   };
 
   render() {
+    console.log('values', this.props.values);
     const actions = [
       <FlatButton
         label="Cancel"

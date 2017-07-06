@@ -38,7 +38,7 @@ export default ({ basePath }) => ({ dispatch }) => next => async action => {
   });
 
   let fullUrl = url ? url : basePath + path;
-
+  console.log('zzzzzzzz', data);
   let body = undefined;
 
   if (method === 'get') {

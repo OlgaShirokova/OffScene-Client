@@ -77,11 +77,11 @@ export const resetNotification = () => ({
   type: RESET_NOTIFICATION,
 });
 
-export const postOffer = () => ({
+export const postOffer = payload => ({
   type: POST_OFFER,
   [API_CALL]: {
-    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/offers',
-    // schema: schemas.eventArray,
-    // path: '/events',
+    method: 'post',
+    path: '/offers',
+    data: payload,
   },
 });

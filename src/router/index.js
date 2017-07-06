@@ -25,7 +25,7 @@ export default function Router() {
           <Route path="/artists" component={ArtistListPage} />
           <Route path="/signup" component={SignupPage} />
           <Route path="/login" component={LoginPage} />
-          <Route path="/book/:id" component={NewEventPage} />
+          <Route path="/book/:id" component={requireAuth(NewEventPage)} />
           <Route component={NotFoundPage} />
         </Switch>
         <SnackBar />
