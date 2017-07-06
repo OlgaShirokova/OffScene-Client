@@ -53,9 +53,9 @@ export const getArtists = payload => ({
 export const getMyEvents = () => ({
   type: GET_MY_EVENTS,
   [API_CALL]: {
-    url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
+    // url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
     schema: schemas.eventArray,
-    // path: '/events',
+    path: '/events',
   },
 });
 
