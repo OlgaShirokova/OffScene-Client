@@ -1,3 +1,114 @@
+// import React from 'react'
+// import { Field, reduxForm } from 'redux-form'
+// import TextField from 'material-ui/TextField'
+// import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+// import Checkbox from 'material-ui/Checkbox'
+// import DatePicker from 'material-ui/DatePicker'
+// import SelectField from 'material-ui/SelectField'
+// import MenuItem from 'material-ui/MenuItem'
+//
+// const validate = values => {
+//   const errors = {}
+//   const requiredFields = [
+//     'date',
+//     'price',
+//     'location',
+//   ]
+//   requiredFields.forEach(field => {
+//     if (!values[field]) {
+//       errors[field] = 'Required'
+//     }
+//   })
+//   return errors
+// }
+//
+// const renderTextField = ({
+//   input,
+//   label,
+//   meta: { touched, error },
+//   ...custom
+// }) => (
+//   <TextField
+//     hintText={label}
+//     floatingLabelText={label}
+//     errorText={touched && error}
+//     {...input}
+//     {...custom}
+//   />
+// )
+//
+// const renderCheckbox = ({ input, label }) => (
+//   <Checkbox
+//     label={label}
+//     checked={input.value ? true : false}
+//     onCheck={input.onChange}
+//   />
+// )
+//
+// const renderRadioGroup = ({ input, ...rest }) => (
+//   <RadioButtonGroup
+//     {...input}
+//     {...rest}
+//     valueSelected={input.value}
+//     onChange={(event, value) => input.onChange(value)}
+//   />
+// )
+//
+// const renderSelectField = ({
+//   input,
+//   label,
+//   meta: { touched, error },
+//   children,
+//   ...custom
+// }) => (
+//   <SelectField
+//     floatingLabelText={label}
+//     errorText={touched && error}
+//     {...input}
+//     onChange={(event, index, value) => input.onChange(value)}
+//     children={children}
+//     {...custom}
+//   />
+// )
+//
+// const NewEventPage = props => {
+//   const { pristine, reset, submitting } = props
+//
+//   const handleSubmit = () => {
+//     console.log('submitted bishes');
+//   }
+//
+//   return (
+//     <form>
+//       <div>
+//         <Field
+//           name="date"
+//           component={DatePicker}
+//           format={null}
+//           floatingLabelText="What is the day of the event?"
+//         />
+//       </div>
+//       <div>
+//         <Field name="price" component={renderTextField} label="Make an offer $" />
+//       </div>
+//       <div>
+//         <Field name="location" component={renderTextField} label="What's the event location?" />
+//       </div>
+//       <div style={{ marginTop: '15px' }}>
+//         <button type="button" disabled={pristine || submitting} onClick={() => console.log('submitted')}>Submit</button>
+//         <button type="button" disabled={pristine || submitting} onClick={reset}>
+//           Clear Values
+//         </button>
+//       </div>
+//     </form>
+//   )
+// }
+//
+// export default reduxForm({
+//   form: 'formBookNow', // a unique identifier for this form
+//   validate,
+// })(NewEventPage)
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
@@ -61,22 +172,23 @@ class NewEventPage extends Component {
     return (
       <div className={styles.bookNowContainer}>
         <div>
-          <Paper className={styles.bookNow}>
-            <form className={styles.formContainer}>
-              <div className={styles.form}>
+          <Paper style={{ padding: '20px' }}>
+            <form>
+              <div>
                 <Subheader inset={false} className={styles.subheader}>
-                  <BookmarkBorder className={styles.icon} />
-                  Select a date
+                  <BookmarkBorder />
+                  <span>Select a date</span>
                 </Subheader>
                 <Field
                   name="date"
                   component={DatePicker}
-                  format={null}
                   floatingLabelText="What is the day of the event?"
                 />
+              </div>
+              <div>
                 <Subheader inset={false} className={styles.subheader}>
-                  <LocationOn className={styles.icon} />
-                  Location
+                  <LocationOn />
+                  <span>Location</span>
                 </Subheader>
                 <Field
                   id={'city'}
@@ -85,9 +197,11 @@ class NewEventPage extends Component {
                   type="text"
                   placeholder="City"
                 />
+              </div>
+              <div>
                 <Subheader inset={false} className={styles.subheader}>
-                  <Payment className={styles.icon} />
-                  Payment
+                  <Payment />
+                  <span>Payment</span>
                 </Subheader>
                 <Field
                   id={'price'}
@@ -116,6 +230,6 @@ NewEventPage.propTypes = {
 };
 
 export default reduxForm({
-  validate,
   form: 'bookNowForm',
+  validate,
 })(connect(data => NewEventPage.getData, ActionCreators)(NewEventPage));

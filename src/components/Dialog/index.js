@@ -11,6 +11,7 @@ export default class DialogSimple extends React.Component {
   static getData = state => ({
     djs: state.entities.djs,
     selectedDate: state.pages.artistsPage.results,
+    values: state.form.bookNowForm.values,
   });
   state = {
     open: false,
@@ -58,10 +59,14 @@ export default class DialogSimple extends React.Component {
           You have placed an order to: <br />
           - DJ name: <b>{this.props.djs[this.props.id].name}</b>
           <br />
-          - Location: <br />
-          - Date: <b>{Date(this.props.selectedDate)}</b>
+          - Location:{' '}
+          <b>{JSON.stringify(this.props.values && this.props.values.city)}</b>
           <br />
-          - Amount:
+          - Date:{' '}
+          <b>{JSON.stringify(this.props.values && this.props.values.date)}</b>
+          <br />
+          - Amount:{' '}
+          <b>{JSON.stringify(this.props.values && this.props.values.price)}</b>
         </Dialog>
       </div>
     );
