@@ -42,8 +42,8 @@ export const signUp = payload => ({
 export const getArtists = payload => ({
   type: GET_ARTISTS,
   [API_CALL]: {
-    url: 'http://private-272859-offstage.apiary-mock.com/search',
-    // path: '/search',
+    // url: 'http://private-272859-offstage.apiary-mock.com/search',
+    path: '/search',
     data: payload,
     schema: schemas.djArray,
   },

@@ -19,7 +19,7 @@ export default class ArtistCard extends Component {
         <Card className={styles.card}>
           <CardHeader
             title={this.props.dj.name}
-            subtitle={`Rating: ${this.props.dj.avgRating / 100}/5`}
+            subtitle={`Rating: ${this.props.dj.avgRating}/5`}
             avatar={this.props.dj.picture}
             titleStyle={{ fontWeight: '600' }}
             subtitleStyle={{ fontWeight: '100' }}

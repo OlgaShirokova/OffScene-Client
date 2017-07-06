@@ -2,7 +2,7 @@ import merge from 'lodash.merge';
 
 const INITIAL_STATE = {
   djs: {},
-  genres: {},
+  musicGenres: {},
   events: {},
 };
 

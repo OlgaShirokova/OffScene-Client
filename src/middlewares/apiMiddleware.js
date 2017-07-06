@@ -2,14 +2,14 @@ import { normalize, schema as Schema } from 'normalizr';
 import { getToken, saveToken } from 'utils/localStorage';
 import { signOut } from 'actions';
 import queryString from 'query-string';
-const genre = new Schema.Entity('genres');
+const musicGenre = new Schema.Entity('musicGenres');
 const dj = new Schema.Entity('djs', {
-  genres: [genre],
+  musicGenres: [musicGenre],
 });
 const event = new Schema.Entity('events');
 
 export const schemas = {
-  genre,
+  musicGenre,
   dj,
   event,
   djArray: new Schema.Array(dj),
@@ -43,8 +43,10 @@ export default ({ basePath }) => ({ dispatch }) => next => async action => {
 
   if (method === 'get') {
     const queryParams = queryString.stringify(data);
+
     if (queryParams) {
       path = `${path}?${queryParams}`;
+      fullUrl = url ? url : basePath + String(path);
     }
   }
 
