@@ -33,7 +33,7 @@ export default class DialogSimple extends React.Component {
         : Date.now(),
       djId: Number(this.props.id),
       location: this.props.values.city ? this.props.values.city : 'Barcelona',
-      price: this.props.values.price ? this.props.values.price : 8000,
+      price: this.props.values.price ? Number(this.props.values.price) : 8000,
     });
     this.setState({ open: false });
   };
