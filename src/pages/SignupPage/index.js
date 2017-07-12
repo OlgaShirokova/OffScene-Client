@@ -50,7 +50,7 @@ function SignupForm({ onSubmit, onChange, errors, user }) {
             onChange={onChange}
             checked={user.role == 0}
           />
-          <p>DJ</p>
+          <p>ACTOR</p>
           <input
             className={styles.choiceButton}
             type="radio"

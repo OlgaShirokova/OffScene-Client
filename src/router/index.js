@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import {
   HomePage,
-  MyEventsPage,
-  ArtistListPage,
+  MyPerformancesPage,
+  ActorListPage,
   LoginPage,
   SignupPage,
-  ArtistProfilePage,
-  NewEventPage,
+  ActorProfilePage,
+  NewPerformancePage,
   NotFoundPage,
 } from 'pages';
 import { Header, SnackBar } from 'components';
@@ -20,12 +20,15 @@ export default function Router() {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/events" component={requireAuth(MyEventsPage)} />
-          <Route path="/artists/:id/" component={ArtistProfilePage} />
-          <Route path="/artists" component={ArtistListPage} />
+          <Route
+            path="/performances"
+            component={requireAuth(MyPerformancesPage)}
+          />
+          <Route path="/actors/:id/" component={ActorProfilePage} />
+          <Route path="/actors" component={ActorListPage} />
           <Route path="/signup" component={SignupPage} />
           <Route path="/login" component={LoginPage} />
-          <Route path="/book/:id" component={requireAuth(NewEventPage)} />
+          <Route path="/book/:id" component={requireAuth(NewPerformancePage)} />
           <Route component={NotFoundPage} />
         </Switch>
         <SnackBar />

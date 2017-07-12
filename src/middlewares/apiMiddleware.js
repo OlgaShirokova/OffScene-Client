@@ -2,18 +2,18 @@ import { normalize, schema as Schema } from 'normalizr';
 import { getToken, saveToken } from 'utils/localStorage';
 import { signOut } from 'actions';
 import queryString from 'query-string';
-const musicGenre = new Schema.Entity('musicGenres');
-const dj = new Schema.Entity('djs', {
-  musicGenres: [musicGenre],
+const movieGenre = new Schema.Entity('movieGenres');
+const actor = new Schema.Entity('actors', {
+  movieGenres: [movieGenre],
 });
-const event = new Schema.Entity('events');
+const performance = new Schema.Entity('performances');
 
 export const schemas = {
-  musicGenre,
-  dj,
-  event,
-  djArray: new Schema.Array(dj),
-  eventArray: new Schema.Array(event),
+  movieGenre,
+  actor,
+  performance,
+  actorArray: new Schema.Array(actor),
+  performanceArray: new Schema.Array(performance),
 };
 
 export const API_CALL = Symbol('API_CALL');
@@ -38,7 +38,7 @@ export default ({ basePath }) => ({ dispatch }) => next => async action => {
   });
 
   let fullUrl = url ? url : basePath + path;
-  console.log('zzzzzzzz', data);
+
   let body = undefined;
 
   if (method === 'get') {

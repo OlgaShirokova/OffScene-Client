@@ -3,8 +3,6 @@ import loginPage from './loginPage';
 import signupPage from './signupPage';
 const {
   REMOVE_SELECTED_GENRE,
-  GET_DJ,
-  FILTER_SEARCH_SUCCESS,
   LOGIN_PAGE_FORM_CHANGE,
   SIGNUP_PAGE_FORM_CHANGE,
   SIGN_IN_FAIL,
@@ -76,12 +74,6 @@ export default function pagesReducer(state = INITIAL_STATE, action) {
           el => el !== action.payload.toString()
         ),
       }),
-    });
-  }
-
-  if (action.type === GET_DJ) {
-    return Object.assign({}, state, {
-      artistID: action.payload,
     });
   }
 

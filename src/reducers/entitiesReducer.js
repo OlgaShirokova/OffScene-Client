@@ -1,9 +1,9 @@
 import merge from 'lodash.merge';
 
 const INITIAL_STATE = {
-  djs: {},
-  musicGenres: {},
-  events: {},
+  actors: {},
+  movieGenres: {},
+  performances: {},
 };
 
 export default function entitiesReducer(state = INITIAL_STATE, action) {

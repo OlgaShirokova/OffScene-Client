@@ -1,8 +1,8 @@
-export { default as ArtistListPage } from './ArtistListPage';
-export { default as MyEventsPage } from './MyEventsPage';
+export { default as ActorListPage } from './ActorListPage';
+export { default as MyPerformancesPage } from './MyPerformancesPage';
 export { default as LoginPage } from './LoginPage';
 export { default as SignupPage } from './SignupPage';
 export { default as HomePage } from './HomePage';
-export { default as ArtistProfilePage } from './ArtistProfilePage';
-export { default as NewEventPage } from './NewEventPage';
+export { default as ActorProfilePage } from './ActorProfilePage';
+export { default as NewPerformancePage } from './NewPerformancePage';
 export { default as NotFoundPage } from './NotFoundPage';

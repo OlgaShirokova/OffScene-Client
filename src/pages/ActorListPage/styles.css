@@ -1,0 +1,24 @@
+.artistsContainer {
+  display: flex;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.actorListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.actorContainer {
+  flex-basis: 200px;
+}
+
+@media (max-width: 835px) {
+  .artistsContainer {
+    flex-direction: column;
+  }
+  .paperContainer {
+    margin-bottom: 30px;
+  }
+}

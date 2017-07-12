@@ -8,15 +8,11 @@ function defineActionTypes(types) {
 }
 
 export default defineActionTypes([
-  'GET_DJ',
-  'DEFAULT_SEARCH',
   'REMOVE_SELECTED_GENRE',
-  'GET_EVENTS',
   'SIGN_IN',
   'SIGN_UP',
-  'GET_MY_EVENTS',
+  'GET_MY_PERFORMANCES',
   'GET_ARTISTS',
-  'FILTER_SEARCH',
   'SIGN_OUT',
   'LOGIN_PAGE_FORM_CHANGE',
   'SIGNUP_PAGE_FORM_CHANGE',

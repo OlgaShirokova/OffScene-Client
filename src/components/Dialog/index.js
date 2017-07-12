@@ -9,7 +9,7 @@ import * as ActionCreators from 'actions';
 @connect(data => DialogSimple.getData, ActionCreators)
 export default class DialogSimple extends React.Component {
   static getData = state => ({
-    djs: state.entities.djs,
+    actors: state.entities.actors,
     selectedDate: state.pages.artistsPage.results,
     values: state.form.bookNowForm.values || {
       date: new Date(),
@@ -31,7 +31,7 @@ export default class DialogSimple extends React.Component {
       date: this.props.values.date
         ? this.props.values.date.getTime()
         : Date.now(),
-      djId: Number(this.props.id),
+      actorId: Number(this.props.id),
       location: this.props.values.city ? this.props.values.city : 'Barcelona',
       price: this.props.values.price ? Number(this.props.values.price) : 8000,
     });
@@ -70,7 +70,7 @@ export default class DialogSimple extends React.Component {
           onRequestClose={this.handleClose}
         >
           You have placed an order to: <br />
-          - DJ name: <b>{this.props.djs[this.props.id].name}</b>
+          - actor name: <b>{this.props.actors[this.props.id].name}</b>
           <br />
           - Location:{' '}
           <b>{JSON.stringify(this.props.values && this.props.values.city)}</b>
@@ -88,7 +88,7 @@ export default class DialogSimple extends React.Component {
 
 DialogSimple.propTypes = {
   id: object.isRequired,
-  djs: object.isRequired,
+  actors: object.isRequired,
   selectedDate: number,
 };
 

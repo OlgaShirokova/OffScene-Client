@@ -13,7 +13,7 @@ export default class NotFoundPage extends Component {
           The page you are looking for doesnt exist or an other error occured.
         </h4>
         <h4>
-          Head over to <Link to="/">OffStage</Link> to choose a new direction.
+          Head over to <Link to="/">OffScene</Link> to choose a new direction.
         </h4>
       </div>
     );

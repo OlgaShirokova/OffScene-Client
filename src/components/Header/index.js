@@ -35,7 +35,7 @@ export default class Header extends Component {
   _renderMenuItemsAuth() {
     return [
       <MenuItem onTouchTap={this._handleClose}>
-        <Link to="/events" title="Events" />
+        <Link to="/performances" title="Perfs" />
       </MenuItem>,
       <MenuItem onTouchTap={this._handleClose}>
         <a
@@ -72,7 +72,7 @@ export default class Header extends Component {
           <Link exact to="/" title="Home" />
         </MenuItem>
         <MenuItem onTouchTap={this._handleClose}>
-          <Link to="/artists" title="Artists" />
+          <Link to="/actors" title="Actors" />
         </MenuItem>
         {this.props.isAuth
           ? this._renderMenuItemsAuth()
@@ -87,7 +87,7 @@ export default class Header extends Component {
         <AppBar
           title={
             <NavLink exact to="/" activeClassName={styles.title}>
-              OFFSTAGE
+              OFFSCENE
             </NavLink>
           }
           style={{ backgroundColor: 'white' }}

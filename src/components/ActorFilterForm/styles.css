@@ -1,0 +1,38 @@
+.formContainerBottomRow, .formContainerTopRow {
+  display: flex;
+}
+
+.formContainerTopRow {
+  flex-direction: column;
+}
+
+.formContainerTopRow, .date {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.formContainerBottomRow {
+  flex-direction: column;
+}
+
+.chips {
+  display: flex;
+}
+
+.chip {
+  margin-right: 5px !important;
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  height: 24px;
+}
+
+.icon {
+  margin-right: 6px;
+}
+
+.date, .genres, .price, .chips {
+  padding: 15px;
+}

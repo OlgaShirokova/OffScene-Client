@@ -24,7 +24,7 @@ function rootReducer(state, action) {
     state = {
       ...state,
       auth: undefined,
-      entities: { ...state.entities, events: {} },
+      entities: { ...state.entities, performances: {} },
       pages: {
         ...state.pages,
         loginPage: LOGIN_PAGE_INITIAL_STATE,

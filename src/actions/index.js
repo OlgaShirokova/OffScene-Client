@@ -1,13 +1,10 @@
 import { API_CALL, schemas } from 'middlewares/apiMiddleware';
 import types from './types';
 const {
-  GET_DJ,
-  DEFAULT_SEARCH,
   REMOVE_SELECTED_GENRE,
-  GET_EVENTS,
   SIGN_IN,
   SIGN_UP,
-  GET_MY_EVENTS,
+  GET_MY_PERFORMANCES,
   GET_ARTISTS,
   SIGN_OUT,
   SIGNUP_PAGE_FORM_CHANGE,
@@ -40,22 +37,22 @@ export const signUp = payload => ({
   },
 });
 
-export const getArtists = payload => ({
+export const getActors = payload => ({
   type: GET_ARTISTS,
   [API_CALL]: {
     // url: 'http://private-272859-offstage.apiary-mock.com/search',
     path: '/search',
     data: payload,
-    schema: schemas.djArray,
+    schema: schemas.actorArray,
   },
 });
 
-export const getMyEvents = () => ({
-  type: GET_MY_EVENTS,
+export const getMyPerformances = () => ({
+  type: GET_MY_PERFORMANCES,
   [API_CALL]: {
     // url: 'http://private-anon-d23f8e55e8-offstage.apiary-mock.com/events',
-    schema: schemas.eventArray,
-    path: '/events',
+    schema: schemas.performanceArray,
+    path: '/performances',
   },
 });
 
